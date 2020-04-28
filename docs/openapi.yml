@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Book API
   description: API for tracking your books
-  version: 1.2.0
+  version: 1.0.0
 servers:
 - url: /
 paths:
@@ -26,14 +26,10 @@ components:
           type: array
           items:
             required:
-            - author
             - title
             type: object
             properties:
               title:
                 type: string
                 example: Lord of the Rings
-              author:
-                type: string
-                example: J.R.R. Tolkien
             additionalProperties: false
