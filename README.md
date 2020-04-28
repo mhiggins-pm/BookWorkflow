@@ -1,10 +1,4 @@
-# Connect 2020
-
-This repository shows a possible workflow for working with SwaggerHub, CI/CD, and the SwaggerHub Registry API.
-
-We're using GitHub Actions for the pipeline. We're using Node.js for the API and testing.
-
-## Workflow
+# Workflow
 
 Here are the steps we'll take to look at this workflow.
 
