@@ -5,12 +5,12 @@ const yaml = require("js-yaml");
 const API_KEY = process.env.SWAGGERHUB_KEY;
 
 const openAPIPath = "./docs/openapi.yml";
-const owner = "smizell";
-const api = "connect-2020";
+const owner = "SmartBearTPM_Org";
+const api = "Book";
 const version = getVersion();
 
-const PUBLISH_URL = `https://api.swaggerhub.com/apis/${owner}/${api}/${version}/settings/lifecycle?force=false`;
-const MARK_DEFAULT_URL = `https://api.swaggerhub.com/apis/${owner}/${api}/settings/default`;
+const PUBLISH_URL = `https://52.16.125.35/apis/v1/${owner}/${api}/${version}/settings/lifecycle?force=false`;
+const MARK_DEFAULT_URL = `https://52.16.125.35/apis/v1/${owner}/${api}/settings/default`;
 
 function getVersion() {
   const doc = yaml.safeLoad(fs.readFileSync(openAPIPath, "utf8"));
