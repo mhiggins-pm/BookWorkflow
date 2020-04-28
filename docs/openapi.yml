@@ -4,7 +4,8 @@ info:
   description: API for tracking your books
   version: 1.0.0
 servers:
-- url: /
+- url: https://52.16.125.35/virts/SmartBearTPM_Org/Book/1.0.0
+  description: SwaggerHub API Auto Mocking
 paths:
   /books:
     get:
