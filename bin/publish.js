@@ -1,6 +1,9 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const axios = require("axios");
 const fs = require("fs");
 const yaml = require("js-yaml");
+const https = require("https");
 
 const API_KEY = process.env.SWAGGERHUB_KEY;
 
@@ -18,10 +21,16 @@ function getVersion() {
 }
 
 async function publish() {
+  const instance = axios.create({
+    httpsAgent: new https.Agent({  
+      rejectUnauthorized: false
+    })
+  });
+  
   try {
     // Publish
     console.log(`Publishing ${version}`);
-    await axios({
+    await instance({
       url: PUBLISH_URL,
       method: "PUT",
       headers: {
@@ -34,7 +43,7 @@ async function publish() {
     });
 
     console.log(`Marking ${version} as default`);
-    await axios({
+    await instance({
       url: MARK_DEFAULT_URL,
       method: "PUT",
       headers: {
