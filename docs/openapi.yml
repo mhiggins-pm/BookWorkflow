@@ -31,5 +31,5 @@ components:
             properties:
               title:
                 type: string
-                example: Lord of the Rings
+                example: Time Enough For Love
             additionalProperties: false
