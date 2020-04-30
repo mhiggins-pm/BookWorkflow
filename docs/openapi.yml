@@ -27,13 +27,9 @@ components:
           items:
             required:
             - author
-            - title
             type: object
             properties:
               title:
                 type: string
                 example: Lord of the Rings
-              author:
-                type: string
-                example: J.R.R. Tolkien
             additionalProperties: false
