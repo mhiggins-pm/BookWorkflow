@@ -31,5 +31,5 @@ components:
             properties:
               title:
                 type: string
-                example: Time Enough For Love
+                example: Time Enought For Love
             additionalProperties: false
