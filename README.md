@@ -1,4 +1,4 @@
-# Workflow
+# BookWorkflow
 
 Here are the steps we'll take to look at this workflow.
 
