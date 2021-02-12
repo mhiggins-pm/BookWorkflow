@@ -73,7 +73,7 @@ components:
       properties:
         title:
           type: string
-          example: Time Enough For Love
+          example: XXXXXTime Enough For Love
         author:
           type: string
           example: Robert Heinlein
