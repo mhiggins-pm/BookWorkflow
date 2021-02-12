@@ -7,7 +7,7 @@ const https = require("https");
 
 const API_KEY = process.env.SWAGGERHUB_KEY;
 
-const openAPIPath = "./docs/openapi.yml";
+const openAPIPath = "./yaml-resolved/openapi.yml";
 const owner = "SmartBearTPM_Org";
 const api = "Book";
 const version = getVersion();
