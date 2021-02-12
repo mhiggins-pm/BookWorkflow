@@ -21,11 +21,11 @@ function getVersion() {
 }
 
 async function publish() {
-  const instance = axios.create({
-    httpsAgent: new https.Agent({  
-      rejectUnauthorized: false
-    })
-  });
+//  const instance = axios.create({
+//    httpsAgent: new https.Agent({  
+//      rejectUnauthorized: false
+//    })
+//  });
   
   try {
     // Publish
