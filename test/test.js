@@ -3,7 +3,7 @@ const chai = require("chai");
 const path = require("path");
 const expect = chai.expect;
 const chaiResponseValidator = require("chai-openapi-response-validator");
-const openAPIpath = path.resolve("./docs/openapi.yml");
+const openAPIpath = path.resolve("./yaml-resolved/openapi.yml");
 chai.use(chaiResponseValidator(openAPIpath));
 
 // Starts the server
