@@ -12,8 +12,8 @@ const owner = "SmartBearTPM_Org";
 const api = "Book";
 const version = getVersion();
 
-const PUBLISH_URL = `https://52.16.125.35/v1/apis/${owner}/${api}/${version}/settings/lifecycle?force=false`;
-const MARK_DEFAULT_URL = `https://52.16.125.35/v1/apis/${owner}/${api}/settings/default`;
+const PUBLISH_URL = `https://swaggerhub.mwhiggins.com/v1/apis/${owner}/${api}/${version}/settings/lifecycle?force=false`;
+const MARK_DEFAULT_URL = `https://swaggerhub.mwhiggins.com/v1/apis/${owner}/${api}/settings/default`;
 
 function getVersion() {
   const doc = yaml.safeLoad(fs.readFileSync(openAPIPath, "utf8"));
