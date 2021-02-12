@@ -18,8 +18,7 @@ info:
     business-unit: Retail
     business-domain: Books and Magazines
 servers:
-- url: https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.1.0
-  description: SwaggerHub API Auto Mocking
+- url: /
 tags:
 - name: Book
   description: Book
