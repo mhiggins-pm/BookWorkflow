@@ -14,10 +14,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: "12.x"
+    if: github.ref == 'refs/heads/master'
     - run: npm ci
     - run: npm test
     - run: node bin/publish
       env:
         CI: true
         SWAGGERHUB_KEY: ${{ secrets.SWAGGERHUB_KEY }}
-      if: github.ref == 'refs/heads/master'
