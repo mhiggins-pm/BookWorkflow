@@ -18,8 +18,7 @@ info:
     business-unit: Retail
     business-domain: Books and Magazines
 servers:
-- url: https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.1.0
-  description: SwaggerHub API Auto Mocking
+- url: /
 tags:
 - name: Book
   description: Book
@@ -74,10 +73,7 @@ components:
       properties:
         title:
           type: string
-          example: XXXXXTime Enough For Love
-        author:
-          type: string
-          example: Robert Heinlein
+          example: Time Enough For Love
   securitySchemes:
     bearerAuth:
       type: http
