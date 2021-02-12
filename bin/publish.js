@@ -8,7 +8,7 @@ const https = require("https");
 const API_KEY = process.env.SWAGGERHUB_KEY;
 
 const openAPIPath = "./yaml-resolved/swagger.yaml";
-const owner = "SmartBearTPM_Org";
+const owner = "SmartBear_Org";
 const api = "Book";
 const version = getVersion();
 
