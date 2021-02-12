@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: "12.x"
     - run: npm ci
-//    - run: npm test
+    - run: npm test
     - run: node bin/publish
       env:
         CI: true
