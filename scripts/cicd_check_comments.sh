@@ -81,16 +81,9 @@ fi
 ###################################################################################################
 # check the API/Verion exists
 
-if [ $CLI == "true" ]; then
-
-   STRING1=$(swaggerhub api:get $ORG/$API/$VER --json)
-
-else
-
-   STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
-                      -H "accept: application/json"                            \
-                      -H "Authorization: Bearer $API_KEY")
-fi
+STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
+                   -H "accept: application/json"                            \
+                   -H "Authorization: Bearer $API_KEY")
 
 TEST=$(echo $STRING1 | jq '.info')
 
@@ -102,7 +95,6 @@ fi
 
 ######################################################################################################
 # begin
-
 
 STRING2=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/comments"  \
                    -H "accept: application/json"                           \
