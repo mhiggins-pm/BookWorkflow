@@ -8,7 +8,7 @@ chai.use(chaiResponseValidator(openAPIpath));
 
 // Starts the server
 
-describe("GET /books", function () {
+describe("GET /book", function () {
   let server;
 
   before(function () {
