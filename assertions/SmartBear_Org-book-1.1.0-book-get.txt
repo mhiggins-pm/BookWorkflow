@@ -1,9 +1,0 @@
-{
-  "items" : [
-    {
-      "title" : "Time Enough For Love",
-      "author" : "Robert Heinlein",
-      "pub-date" : "22-01-2021"
-    }
-  ]
-}
