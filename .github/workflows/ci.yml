@@ -35,6 +35,6 @@ jobs:
           NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
           ORG: ${{ 'SmartBear_Org' }}
           API: ${{ 'Book' }}
-          VER: ${{ '1.1.0 }}
+          VER: ${{ '1.1.0' }}
           
 
