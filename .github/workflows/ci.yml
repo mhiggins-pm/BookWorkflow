@@ -26,7 +26,7 @@ jobs:
       - run: ./scripts/cicd_check_validation.sh $ORG $API $VER
 
       - run: chmod +x ./scripts/cicd_get_auto-mock.sh     
-      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$XPATH json ./assertions/$ORG-$API-$VER-$APTH-get.txt
+      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$XPATH json ./assertions/$ORG-$API-$VER-$XPATH-get.txt
         
 # if all checks pass, set the API to published and default
 
