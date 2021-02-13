@@ -12,6 +12,9 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install swaggerhub-cli -g && npm install js-yaml
+      - name: Install xmllint
+        run: sudo apt-get install jq
+        
         # Run other automation here, such as tests or standardisation checks.
       - run: echo "Publish API"
       - run: |
