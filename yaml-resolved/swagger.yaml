@@ -12,7 +12,7 @@ info:
     url: http://www.smartbear.com/licenses/2021/LICENSE-2.0.html
   version: 1.1.0
   x-jira-ticket: SNOP-2216
-  x-security-approval: required
+  x-security-approval: pending
   x-filters:
     status: Devlopment
     business-unit: Retail
