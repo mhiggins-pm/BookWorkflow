@@ -13,9 +13,12 @@ jobs:
           node-version: "12.x"
       - run: npm install swaggerhub-cli -g && npm install js-yaml
         # Run other automation here, such as tests or standardisation checks.
-      - run: echo "Publlish API"
+      - run: echo "Publish API"
       - run: |
-          swaggerhub api:publish "SmartBear_Org/Book2/1.0.0"
+          swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
+      - run: echo "Set API Default"
+      - run: |
+          swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
         env:
           CI: true
           SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
