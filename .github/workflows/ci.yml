@@ -12,16 +12,21 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install swaggerhub-cli -g && npm install js-yaml
-      - run: sudo apt-get --yes install jq
-      - run: echo "Publish API"
-      - run: |
-          swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
-      - run: echo "Set API Default"
-      - run: |
-          swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
-      - run: echo "Check for Open comments"  
+      - run: sudo apt-get --yes --quiet install jq
+
+# run checks, they fail with exit 1
       - run: chmod +x ./scripts/cicd_check_comments.sh     
       - run: ./scripts/cicd_check_comments.sh $ORG $API $VER
+        
+      - run: chmod +x ./scripts/cicd_check_validation.sh     
+      - run: ./scripts/cicd_check_validation.sh $ORG $API $VER
+
+# if all checks pass, publish and set default
+      - run: |
+          swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
+      - run: |
+          swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
+        
     env:
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
       SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
