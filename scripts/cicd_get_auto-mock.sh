@@ -22,7 +22,7 @@ echo "cicd_get_auto-mock  ${RELEASE} - `date`"
 ###################################################################################################
 # read config file
 
-CONFIG_FILE=$HOME/.swaggerhub-bash.cfg
+CONFIG_FILE=./scripts/swaggerhub-bash.cfg
 
 if [ -f $CONFIG_FILE ]; then
    BUFFER=$(jq -r '.' $CONFIG_FILE)
@@ -47,24 +47,6 @@ if ! jq --help &> /dev/null; then
    echo " "
    echo "The Linux utility jq must be installed to use this script"
    exit 1
-fi
-
-###################################################################################################
-# check that tidy is installed
-
-if ! tidy --version &> /dev/null; then
-   echo " "
-   echo "The Linux utility tidy must be installed to use this script"
-   exit 1
-fi
-
-###################################################################################################
-# test to see if the SwaggerHub CLI is installed
-
-if swaggerhub --help &> /dev/null; then
-   CLI="true"
-else
-   CLI="false"
 fi
 
 ###################################################################################################
@@ -113,16 +95,9 @@ fi
 ###################################################################################################
 # check the API/Verion exists
 
-if [ $CLI == "true" ]; then
-
-   STRING1=$(swaggerhub api:get $ORG/$API/$VER --json)
-
-else
-
-   STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
-                      -H "accept: application/json"                            \
-                      -H "Authorization: Bearer $API_KEY")
-fi
+STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
+                   -H "accept: application/json"                            \
+                   -H "Authorization: Bearer $API_KEY")
 
 TEST=$(echo $STRING1 | jq '.info')
 
@@ -152,7 +127,6 @@ if [ $APPLICATION == "json" ]; then
                       -H "accept: application/json"              \
                       -H "Authorization: Bearer $API_KEY")
 
-##   MOCK=$(echo $STRING2 | jq -M '.')
    MOCK=$(echo $STRING2)
 
 else   
@@ -161,7 +135,6 @@ else
                       -H "accept: application/xml"               \
                       -H "Authorization: Bearer $API_KEY")
 
-##   MOCK=$(echo $STRING2 | tidy -xml -iq -)
    MOCK=$(echo $STRING2)
 
 fi
