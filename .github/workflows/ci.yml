@@ -43,5 +43,5 @@ jobs:
       API: ${{ 'Book' }}
       VER: ${{ '1.1.0' }}  
       PATH: ${{ 'book' }}
-      ASSSERT-FILE: ${{ "$ORG-$API-$VER-$PATH-get.txt" }}      
+      ASSSERT-FILE: ${{ $ORG-$API-$VER-$PATH-get.txt }}      
 
