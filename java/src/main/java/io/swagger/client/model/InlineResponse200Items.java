@@ -25,7 +25,7 @@ import java.io.IOException;
  * InlineResponse200Items
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-13T22:53:23.715Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-13T22:54:38.923Z[GMT]")
 public class InlineResponse200Items {
   @SerializedName("title")
   private String title = null;
