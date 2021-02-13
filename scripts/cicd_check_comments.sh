@@ -20,7 +20,7 @@ echo "cicd_check_comments  ${RELEASE} - `date`"
 ###################################################################################################
 # read config file
 
-CONFIG_FILE=$HOME/.swaggerhub-bash.cfg
+CONFIG_FILE=scripts/.swaggerhub-bash.cfg
 
 if [ -f $CONFIG_FILE ]; then
    BUFFER=$(jq -r '.' $CONFIG_FILE)
@@ -45,15 +45,6 @@ if ! jq --help &> /dev/null; then
    echo " "
    echo "The Linux utility jq must be installed to use this script"
    exit 1
-fi
-
-###################################################################################################
-# test to see if the SwaggerHub CLI is installed
-
-if swaggerhub --help &> /dev/null; then
-   CLI="true"
-else
-   CLI="false"
 fi
 
 ######################################################################################################
