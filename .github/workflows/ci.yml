@@ -26,7 +26,7 @@ jobs:
       - run: ./scripts/cicd_check_validation.sh $ORG $API $VER
 
       - run: chmod +x ./scripts/cicd_get_auto-mock.sh     
-      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$PATH json ./assertions/$ASSERT-FILE
+      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$PATH json ./assertions/$ORG-$API-$VER-$APTH-get.txt
         
 # if all checks pass, set the API to published and default
 
@@ -43,5 +43,4 @@ jobs:
       API: ${{ 'Book' }}
       VER: ${{ '1.1.0' }}  
       PATH: ${{ 'book' }}
-      ASSSERT-FILE: ${{ $ORG-$API-$VER-$PATH-get.txt }}      
-
+      
