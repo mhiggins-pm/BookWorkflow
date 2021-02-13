@@ -1,13 +1,14 @@
 # BookWorkflow
 
-Here are the steps we'll take to look at this workflow.
+##Here are the steps we'll take to look at this workflow.
 
-1. Create a new version of our Book API in SwaggerHub
-1. Save and push changes to a version-specific branch in GitHub
-1. See failing payload tests, then build functionality
-1. See passing tests, then open Pull Request
-1. Merge to master
-1. Publish and mark new version as default
+API: SmartBear_Org/API/1.1.0
 
-add: test for no Rules violations or fail the PR
-add: test for no Unresolved comments or fail the PR
+The PR fille fail if:
+  - An un-resolved Comment is detected
+  - Any Standaridization Error is detected
+  - The Auto-mock payload does not match the stored Assertion
+
+If no failures are detected the PR will complete:
+  - Set the API to Published
+  - Set the API to Default
