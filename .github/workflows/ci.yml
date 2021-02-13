@@ -12,20 +12,29 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install swaggerhub-cli -g && npm install js-yaml
-      - name: Install xmllint
+      - name: Install jq
         run: sudo apt-get --yes install jq
         
         # Run other automation here, such as tests or standardisation checks.
+          
       - run: echo "Publish API"
       - run: |
           swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
+          
       - run: echo "Set API Default"
       - run: |
           swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
+          
+      - run: echo "Check for Open comments"          
+      - run  |
+          ./scripts/cicd_check_comments.sh $ORG $API $VER
+        
         env:
-          CI: true
           SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
           SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
-          NODE_EXTRA_CA_CERTS: ${{ '.ssh/ca_bundle.crt' }}
+          NODE_EXTRA_CA_CERTS: ${{ './ssh/ca_bundle.crt' }}
+          ORG: ${{ 'SmartBear_Org' }}
+          API: ${{ 'Book' }}
+          VER: ${{ '1.1.0 }}
           
 
