@@ -19,7 +19,8 @@ jobs:
       - run: echo "Set API Default"
       - run: |
           swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
-      - run: echo "Check for Open comments"          
+      - run: echo "Check for Open comments"  
+      - run: chmod +x ./scripts/cicd_check_comments.sh     
       - run: ./scripts/cicd_check_comments.sh $ORG $API $VER
     env:
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
