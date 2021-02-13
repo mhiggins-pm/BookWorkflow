@@ -17,3 +17,4 @@ Start a PR, it will fail if:
 If no failures are detected, the PR will complete:
   - Set the API to Published
   - Set the API to Default
+  - Publish the API Documentation to bump.sh
