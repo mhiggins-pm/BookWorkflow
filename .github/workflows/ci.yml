@@ -31,7 +31,7 @@ jobs:
 # if all checks pass:
 #  - set the API to published 
 #  - saet the API/Version to Defauly
-#  - purlish to bump.sh
+#  - publish documentation to bump.sh
 
       - run: |
           swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
