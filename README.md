@@ -11,7 +11,7 @@ Initialize:
   
 Start a PR, it will fail if:
   - An un-resolved Comments are detected
-  - Any Standaridization Errors are detected
+  - Any Standardization Errors are detected
   - The Auto-mock payload does not match the stored Assertion
 
 If no failures are detected, the PR will complete:
