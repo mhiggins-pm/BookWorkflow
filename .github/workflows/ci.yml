@@ -28,13 +28,22 @@ jobs:
       - run: chmod +x ./scripts/cicd_get_auto-mock.sh     
       - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$XPATH json ./assertions/$ORG-$API-$VER-$XPATH-get.txt
         
-# if all checks pass, set the API to published and default
+# if all checks pass:
+#  - set the API to published 
+#  - saet the API/Version to Defauly
+#  - purlish to bump.sh
 
       - run: |
           swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
       - run: |
           swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
-        
+          
+      - name: Deploy API documentation
+        uses: bump-sh/github-action@0.1
+        with:
+          id: d3df0e2b-b07e-4bab-8aee-4fc8d6daa54f
+          token: 67843a6e628f94b2811231c6454116a7
+          file: ./yaml-resolved/swagger.yaml
     env:
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
       SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
