@@ -25,6 +25,9 @@ jobs:
       - run: chmod +x ./scripts/cicd_check_validation.sh     
       - run: ./scripts/cicd_check_validation.sh $ORG $API $VER
 
+      - run: chmod +x ./scripts/cicd_get_auto-mock.sh     
+      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER $PATH json ./assertions/$ASSERT
+        
 # if all checks pass, set the API to published and default
 
       - run: |
@@ -38,5 +41,7 @@ jobs:
       NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
       ORG: ${{ 'SmartBear_Org' }}
       API: ${{ 'Book' }}
-      VER: ${{ '1.1.0' }}        
+      VER: ${{ '1.1.0' }}  
+      PATH: ${{ "/book" }}
+      ASSSERT: ${{ $ORG-$API-$VER-$PATH-get' }}      
 
