@@ -25,8 +25,8 @@ jobs:
       - run: chmod +x ./scripts/cicd_check_validation.sh     
       - run: ./scripts/cicd_check_validation.sh $ORG $API $VER
 
-#      - run: chmod +x ./scripts/cicd_get_auto-mock.sh     
-#      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$PATH json ./assertions/$ORG-$API-$VER-$APTH-get.txt
+      - run: chmod +x ./scripts/cicd_get_auto-mock.sh     
+      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$PATH json ./assertions/$ORG-$API-$VER-$APTH-get.txt
         
 # if all checks pass, set the API to published and default
 
@@ -38,7 +38,7 @@ jobs:
     env:
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
       SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
-      NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
+#      NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
       ORG: ${{ 'SmartBear_Org' }}
       API: ${{ 'Book' }}
       VER: ${{ '1.1.0' }}  
