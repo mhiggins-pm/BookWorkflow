@@ -14,17 +14,19 @@ jobs:
       - run: npm install swaggerhub-cli -g && npm install js-yaml
       - run: sudo apt-get --yes --quiet install jq
 
-# check payload against asertion
-      - run: npm test
-      
-# run checks, they fail with exit 1
+# run validation checks, that fail with exit 1
+#  - un-redsolved comments
+#  - critical rule violations
+#  - payload assertions vs. mocks
+
       - run: chmod +x ./scripts/cicd_check_comments.sh     
       - run: ./scripts/cicd_check_comments.sh $ORG $API $VER
         
       - run: chmod +x ./scripts/cicd_check_validation.sh     
       - run: ./scripts/cicd_check_validation.sh $ORG $API $VER
 
-# if all checks pass, publish and set default
+# if all checks pass, set the API to published and default
+
       - run: |
           swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
       - run: |
