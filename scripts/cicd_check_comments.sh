@@ -20,7 +20,7 @@ echo "cicd_check_comments  ${RELEASE} - `date`"
 ###################################################################################################
 # read config file
 
-CONFIG_FILE=scripts/swaggerhub-bash.cfg
+CONFIG_FILE=./scripts/swaggerhub-bash.cfg
 
 if [ -f $CONFIG_FILE ]; then
    BUFFER=$(jq -r '.' $CONFIG_FILE)
