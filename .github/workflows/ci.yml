@@ -19,4 +19,6 @@ jobs:
         env:
           CI: true
           SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
-          SWAGGERHUB_URL: ${{ 'https://swagerhub.mwhiggins.com/v1' }}
+          SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
+          
+
