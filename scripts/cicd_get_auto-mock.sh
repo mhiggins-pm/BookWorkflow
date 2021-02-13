@@ -2,21 +2,22 @@
 #
 # cicd_get_auto-mock
 #
-# Script to test if there are Cirtical comments errors for an API/Version
+# Script to test if the mock payload matchhes an assertion (from a file)
 #
 # The Script uses the SwaggerHub Registry API.
 #
-# usage: cidi_get_auto-mock <org> <api> <version> <path>
+# usage: cidi_get_auto-mock <org> <api> <version> <path> <json|xml> <assertion-file>
 #
 # This script is not supported by SmartBear Software and is to be used as-is.
 #
 #   m. higgins    28/01/2021    inital coding (1.0.0)
 #   m. higgins    28/01/2021    added handler for xml or json (1.1.0)
+#   m. higgins    13/02/2021    added assertion file (1.2.0)
 #
  
-###RELEASE="v1.1.0"
-###echo " "
-###echo "cicd_get_auto-mock  ${RELEASE} - `date`"
+RELEASE="v1.2.0"
+echo " "
+echo "cicd_get_auto-mock  ${RELEASE} - `date`"
 
 ###################################################################################################
 # read config file
@@ -69,12 +70,12 @@ fi
 ###################################################################################################
 # process the command line arguements
 
-if [ $# -ne 5 ]
+if [ $# -ne 6 ]
 then
    echo " "
    echo "Incorrect command line arguements."
    echo " "
-   echo "usage: cidi_get_auto-mock <org> <api> <version> <path> <json|xml>"
+   echo "usage: cidi_get_auto-mock <org> <api> <version> <path> <json|xml> <assertion-file>"
    echo " "
    exit 1
 fi
@@ -84,6 +85,7 @@ API=$2
 VER=$3
 XPATH=$4
 APPLICATION=$5
+ASSERTION=$6
 
 case $APPLICATION in
    xml) VALID="true";;
@@ -131,6 +133,17 @@ if [ ${#TEST} -lt 10 ]; then
 fi
 
 ###################################################################################################
+# check the assertion file exists
+
+if [ -f $ASSERTION ]; then
+   ASSERT=$(cat $ASSERTION)
+else
+   echo " "
+   echo "Assertion file: $ASSERTION not found"
+   exit 1
+fi
+
+###################################################################################################
 # begin
 
 if [ $APPLICATION == "json" ]; then
@@ -139,7 +152,8 @@ if [ $APPLICATION == "json" ]; then
                       -H "accept: application/json"              \
                       -H "Authorization: Bearer $API_KEY")
 
-   echo $STRING2 | jq -M '.'
+##   MOCK=$(echo $STRING2 | jq -M '.')
+   MOCK=$(echo $STRING2)
 
 else   
 
@@ -147,6 +161,31 @@ else
                       -H "accept: application/xml"               \
                       -H "Authorization: Bearer $API_KEY")
 
-   echo $STRING2 | tidy -xml -iq -
+##   MOCK=$(echo $STRING2 | tidy -xml -iq -)
+   MOCK=$(echo $STRING2)
+
 fi
+
+# check the assertion matches the mock payload
    
+MOCK_C=$(echo $MOCK | tr -d '\ ')
+ASSERT_C=$(echo $ASSERT | tr -d '\ ')
+
+if [ "$MOCK_C" == "$ASSERT_C" ]; then
+   echo " "
+   echo "INFO: Mock matches Assertion, Exit 0"
+   echo " "
+   exit 0
+else
+   echo " "
+   echo "ERROR: Mock / Assertion mis-match, Exit 1"
+   echo " "
+   echo "Mock:"
+   echo $MOCK
+   echo " "
+   echo "Assertion:"
+   echo $ASSERT
+   echo " "
+   exit 1
+fi   
+
