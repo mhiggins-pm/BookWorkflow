@@ -83,6 +83,7 @@ fi
 
 STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
                    -H "accept: application/json"                            \
+                   -H "Authorization: Bearer $API_KEY")
 
 TEST=$(echo $STRING1 | jq '.info')
 
