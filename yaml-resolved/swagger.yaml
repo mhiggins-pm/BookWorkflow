@@ -78,6 +78,9 @@ components:
         author:
           type: string
           example: Robert Heinlein
+        pub-date:
+          type: string
+          example: 22-01-2021
   securitySchemes:
     bearerAuth:
       type: http
