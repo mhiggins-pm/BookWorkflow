@@ -29,6 +29,7 @@ paths:
     get:
       tags:
       - Book
+      description: List the books
       operationId: a12125
       responses:
         "200":
