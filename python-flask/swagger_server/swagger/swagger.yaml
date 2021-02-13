@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Book API
+  description: API for tracking your books.
+  termsOfService: https://app.swaggerhub.com/eula
+  contact:
+    name: Micheal Higgins
+    url: https://smartbear.com
+    email: micheal.higgins@smartbear.com
+  license:
+    name: SmartBear License
+    url: http://www.smartbear.com/licenses/2021/LICENSE-2.0.html
+  version: 1.1.0
+  x-jira-ticket: SNOP-2216
+  x-security-approval: pending
+  x-filters:
+    status: Devlopment
+    business-unit: Retail
+    business-domain: Books and Magazines
+servers:
+- url: https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.1.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: Book
+  description: Book
+- name: SmartBear
+  description: SmartBear
+paths:
+  /book:
+    get:
+      tags:
+      - Book
+      description: List the books
+      operationId: a12125
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      security:
+      - bearerAuth: []
+      x-openapi-router-controller: swagger_server.controllers.book_controller
+components:
+  schemas:
+    ErrorModel:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+      description: Default error schema.
+    inline_response_200:
+      required:
+      - items
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_items'
+      example:
+        items:
+        - author: Robert Heinlein
+          title: Time Enough For Love
+          pub-date: 22-01-2021
+        - author: Robert Heinlein
+          title: Time Enough For Love
+          pub-date: 22-01-2021
+    inline_response_200_items:
+      required:
+      - author
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+          example: Time Enough For Love
+        author:
+          type: string
+          example: Robert Heinlein
+        pub-date:
+          type: string
+          example: 22-01-2021
+      example:
+        author: Robert Heinlein
+        title: Time Enough For Love
+        pub-date: 22-01-2021
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      x-bearerInfoFunc: swagger_server.controllers.authorization_controller.check_bearerAuth
+
