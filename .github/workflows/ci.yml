@@ -1,22 +1,22 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: API CI
-
 on:
   pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: "12.x"
-    - run: npm ci
-    - run: npm test
-    - run: node bin/publish
-      env:
-        CI: true
-        SWAGGERHUB_KEY: ${{ secrets.SWAGGERHUB_KEY }}
+      - uses: actions/checkout@v2
+      - name: Use Nodejs 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm install swaggerhub-cli -g && npm install js-yaml
+        # Run other automation here, such as tests or standardisation checks.
+      - run: echo "Publlish API"
+      - run: |
+          swaggerhub api:publish "SmartBear_Org/Book2/1.0.0"
+        env:
+          CI: true
+          SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
+          SWAGGERHUB_URL: ${{ 'https://swagerhub.mwhiggins.com/v1' }}
