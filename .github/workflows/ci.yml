@@ -26,7 +26,7 @@ jobs:
           swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
           
       - run: echo "Check for Open comments"          
-      - run  |
+      - run: |
           ./scripts/cicd_check_comments.sh $ORG $API $VER
         
         env:
