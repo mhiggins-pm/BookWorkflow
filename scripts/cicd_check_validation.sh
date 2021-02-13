@@ -20,7 +20,7 @@ echo "cicd_check_validation  ${RELEASE} - `date`"
 ###################################################################################################
 # read config file
 
-CONFIG_FILE=$HOME/.swaggerhub-bash.cfg
+CONFIG_FILE=./scripts/swaggerhub-bash.cfg
 
 if [ -f $CONFIG_FILE ]; then
    BUFFER=$(jq -r '.' $CONFIG_FILE)
@@ -47,15 +47,6 @@ if ! jq --help &> /dev/null; then
    exit 1
 fi
 
-###################################################################################################
-# test to see if the SwaggerHub CLI is installed
-
-if swaggerhub --help &> /dev/null; then
-   CLI="true"
-else
-   CLI="false"
-fi
-
 ######################################################################################################
 # process the command line arguements
 
@@ -66,7 +57,7 @@ then
    echo " "
    echo "usage: cidi_check_validation <org> <api> <version>"
    echo " "
-   exit
+   exit 1
 fi
 
 ORG=$1
@@ -90,16 +81,8 @@ fi
 ###################################################################################################
 # check the API/Verion exists
 
-if [ $CLI == "true" ]; then
-
-   STRING1=$(swaggerhub api:get $ORG/$API/$VER --json)
-
-else
-
-   STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
-                      -H "accept: application/json"                            \
-                      -H "Authorization: Bearer $API_KEY")
-fi
+STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
+                   -H "accept: application/json"                            \
 
 TEST=$(echo $STRING1 | jq '.info')
 
@@ -112,21 +95,11 @@ fi
 ######################################################################################################
 # begin
 
-if [ $CLI == "true" ]; then
-
-   STRING2=$(swaggerhub api:validate $ORG/$API/$VER)
-
-   TEST=$(echo ${STRING2} | tr ":" "\n" |  grep CRITICAL | wc -l)
-
-else
-
-   STRING2=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/validation"  \
-                      -H "accept: application/json"                           \
-                      -H "Authorization: Bearer $API_KEY")
+STRING2=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/validation"  \
+                   -H "accept: application/json"                           \
+                   -H "Authorization: Bearer $API_KEY")
    
-   TEST=$(echo $STRING2 | jq '.' | grep CRITICAL | wc -l)
-
-fi
+TEST=$(echo $STRING2 | jq '.' | grep CRITICAL | wc -l)
 
 ######################################################################################################
 # report
