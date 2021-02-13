@@ -1,6 +1,6 @@
 # BookWorkflow
 
-## Here are the steps of the GitHub Aztions workflow CI.
+## Here are the steps of the GitHub Actions workflow CI.
 
 API: SmartBear_Org/API/1.1.0
 
