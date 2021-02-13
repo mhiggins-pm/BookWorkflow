@@ -17,7 +17,7 @@ jobs:
 # run validation checks, that fail with exit 1
 #  - un-redsolved comments
 #  - critical rule violations
-#  - payload assertions vs. mocks
+#  - payload Assertion vs. Auto-mock
 
       - run: chmod +x ./scripts/cicd_check_comments.sh     
       - run: ./scripts/cicd_check_comments.sh $ORG $API $VER
