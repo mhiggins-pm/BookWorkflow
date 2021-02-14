@@ -10,7 +10,7 @@ Initialize:
   - Install the Linux jq utility
   
 Start a PR, it will fail if:
-  - An un-resolved Comments are detected
+  - Any un-resolved Comments are detected
   - Any Standardization Errors are detected
   - The Auto-mock payload does not match the stored Assertion
 
