@@ -2,9 +2,9 @@
 
 Book API
 - API version: 1.1.0
-  - Build date: 2021-02-13T23:38:29.833Z[GMT]
+  - Build date: 2021-02-14T00:12:42.934Z[GMT]
 
-API for tracking your books.
+API for tracking your books, authors and pub-dates.
 
   For more information, please visit [https://smartbear.com](https://smartbear.com)
 
