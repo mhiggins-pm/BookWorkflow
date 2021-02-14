@@ -38,7 +38,7 @@ jobs:
       - run: |
           swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
           
-      - name: Deploy API documentation
+      - name: Deploy API documentation to bump.sh
         uses: bump-sh/github-action@0.1
         with:
           id: d3df0e2b-b07e-4bab-8aee-4fc8d6daa54f
