@@ -1,6 +1,6 @@
 /*
  * Book API
- * API for tracking your books.
+ * API for tracking your books, authors and pub-dates.
  *
  * OpenAPI spec version: 1.1.0
  * Contact: micheal.higgins@smartbear.com
@@ -25,7 +25,7 @@ import java.io.IOException;
  * InlineResponse200Items
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-13T23:38:29.833Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-14T00:12:42.934Z[GMT]")
 public class InlineResponse200Items {
   @SerializedName("title")
   private String title = null;
