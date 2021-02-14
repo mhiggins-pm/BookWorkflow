@@ -50,15 +50,6 @@ if ! jq --help &> /dev/null; then
 fi
 
 ###################################################################################################
-# check that tidy is installed
-
-if ! tidy --version &> /dev/null; then
-   echo " "
-   echo "The Linux utility tidy must be installed to use this script"
-   exit 1
-fi
-
-###################################################################################################
 # test to see if the SwaggerHub CLI is installed
 
 if swaggerhub --help &> /dev/null; then
