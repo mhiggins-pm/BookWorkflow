@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Book API
-  description: API for tracking your books.
+  description: API for tracking your books, authors and pub-dates.
   termsOfService: https://app.swaggerhub.com/eula
   contact:
     name: Micheal Higgins

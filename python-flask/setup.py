@@ -28,6 +28,6 @@ setup(
     entry_points={
         'console_scripts': ['swagger_server=swagger_server.__main__:main']},
     long_description="""\
-    API for tracking your books.
+    API for tracking your books, authors and pub-dates.
     """
 )
