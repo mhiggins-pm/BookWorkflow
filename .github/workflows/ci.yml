@@ -14,6 +14,22 @@ jobs:
       - run: npm install swaggerhub-cli -g && npm install js-yaml
       - run: sudo apt-get --yes --quiet install jq
 
+# get the ORG, API and VER from the branch name
+
+      - name: Get the ORG, API, VER from the Branch name
+        run: |
+          work=${{ env.GITHUB_BASE_REF }}
+          string=${work##*/}
+          remainder=$string
+          XORG="${remainder%%-*}"; remainder="${remainder#*-}"
+          XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
+          XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
+          echo "ORG=$(echo $XORG >> $GITHUB_ENV)
+          echo "API=$(echo $XAPI >> $GITHUB_ENV)          
+          echo "VER=$(echo $XVER >> $GITHUB_ENV)  
+          echo "API is: $API 
+          exit  
+
 # run validation checks, that fail with exit 1
 #  - un-redsolved comments
 #  - critical rule violations
@@ -49,8 +65,8 @@ jobs:
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
       SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
       NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
-      ORG: ${{ 'SmartBear_Org' }}
-      API: ${{ 'Book' }}
-      VER: ${{ '1.1.0' }}  
+#      ORG: ${{ 'SmartBear_Org' }}
+#      API: ${{ 'Book' }}
+#      VER: ${{ '1.1.0' }}  
       XPATH: ${{ 'book' }}
       
