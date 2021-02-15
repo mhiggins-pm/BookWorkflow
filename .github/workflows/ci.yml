@@ -16,6 +16,15 @@ jobs:
 
 # get the ORG, API and VER from the branch name
    
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
+           
       - name: Get the ORG, API, VER from the Branch name
         run: |
           echo "head ---> ${{ github.event.pull_request.head.ref }}<<"
@@ -26,7 +35,7 @@ jobs:
           echo "XORG ---> $XORG<<"
           echo "ORG=$XORG" >> $GITHUB_ENV
           echo "GITHUB_ENV ---> $GITHUB_ENV"
-          echo "ORG ---> $ORG<<"          
+          echo "ORG ---> ${{ env.ORG }}<<"          
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
           XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
           exit 1
