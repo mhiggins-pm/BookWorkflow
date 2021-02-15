@@ -21,6 +21,7 @@ jobs:
           work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
           remainder=$string
+          XXXX="${remainder%%-*}"; remainder="${remainder#*-}"          
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
           XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
