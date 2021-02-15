@@ -11,8 +11,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-#      - run: npm install swaggerhub-cli -g && npm install js-yaml
-#      - run: sudo apt-get --yes --quiet install jq
+      - run: npm install swaggerhub-cli -g && npm install js-yaml
+      - run: sudo apt-get --yes --quiet install jq
 
 # get the ORG, API and VER from the branch name
            
@@ -23,15 +23,11 @@ jobs:
           remainder=$string
           XXXX="${remainder%%-*}"; remainder="${remainder#*-}"          
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
-          echo "XORG ---> $XORG<<"
-          echo "ORG=$XORG" >> $GITHUB_ENV
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
-          XVER="${remainder%%-*}"; remainder="${remainder#*-}" 
-           
-      - name: test it
-        run: |
-          echo "ORG ---> ${{ env.ORG }}<<"    
-          exit 1
+          XVER="${remainder%%-*}"; remainder="${remainder#*-}"
+          echo "ORG=$XORG" >> $GITHUB_ENV 
+          echo "API=$XAPI" >> $GITHUB_ENV          
+          echo "VER=$XVER" >> $GITHUB_ENV
 
 # run validation checks, that fail with exit 1
 #  - un-redsolved comments
@@ -69,7 +65,6 @@ jobs:
       SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
       NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
       XPATH: ${{ 'book' }}
-      GITHUB_CONTEXT: ${{ toJson(github) }}
 #      ORG: ${{ 'SmartBear_Org' }}
 #      API: ${{ 'Book' }}
 #      VER: ${{ '1.1.0' }}  
