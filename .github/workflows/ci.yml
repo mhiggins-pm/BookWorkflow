@@ -15,16 +15,12 @@ jobs:
 #      - run: sudo apt-get --yes --quiet install jq
 
 # get the ORG, API and VER from the branch name
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
    
       - name: Get the ORG, API, VER from the Branch name
         run: |
           echo "Variables"
-          echo "${{ github.event.pull_request.base.ref }}"
+          echo "---> ${{ github.event.pull_request.base.ref }}<<"
+          echo "---> $env.GITHUB_BASE_REF<<"
           work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
           remainder=$string
