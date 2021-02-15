@@ -20,8 +20,7 @@ jobs:
         run: |
           echo "Variables"
           echo "head ---> ${{ github.event.pull_request.head.ref }}<<"
-          work=${{ github.event.pull_request.head.ref }}
-          string=${work##*/}
+          string=${{ github.event.pull_request.head.ref }}
           remainder=$string
           XXXX="${remainder%%-*}"; remainder="${remainder#*-}"          
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
