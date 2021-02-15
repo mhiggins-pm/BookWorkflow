@@ -18,16 +18,16 @@ jobs:
 
       - name: Get the ORG, API, VER from the Branch name
         run: |
-          work=$GITHUB_BASE_REF
+          work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
           remainder=$string
           XXXX="${remainder%%-*}"; remainder="${remainder#*-}"          
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
           XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
-          echo "ORG=$(echo $XORG >> $GITHUB_ENV)
-          echo "API=$(echo $XAPI >> $GITHUB_ENV)          
-          echo "VER=$(echo $XVER >> $GITHUB_ENV)  
+          echo "ORG=$(echo $XORG >> $GITHUB_ENV)"
+          echo "API=$(echo $XAPI >> $GITHUB_ENV)"         
+          echo "VER=$(echo $XVER >> $GITHUB_ENV)" 
           echo "the API is: ${{ env.API }}"
           exit 1
 
