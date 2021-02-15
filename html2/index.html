@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Book API</title>
+  <title>Book API (w/ actions)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8" />
@@ -757,7 +757,7 @@
       <div id="content">
         <div id="project">
           <div class="pull-left">
-            <h1>Book API</h1>
+            <h1>Book API (w/ actions)</h1>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -875,11 +875,11 @@ BookApi *apiInstance = [[BookApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Book-a12125-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BookApi = require('book_api');
-var defaultClient = BookApi.ApiClient.instance;
+                              <pre class="prettyprint"><code class="language-js">var BookApiWActions = require('book_api__w_actions');
+var defaultClient = BookApiWActions.ApiClient.instance;
 
 
-var api = new BookApi.BookApi()
+var api = new BookApiWActions.BookApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
