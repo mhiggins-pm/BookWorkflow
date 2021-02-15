@@ -25,6 +25,8 @@ tags:
   description: Book
 - name: SmartBear
   description: SmartBear
+- name: Newtag
+  description: Test
 paths:
   /book:
     get:
