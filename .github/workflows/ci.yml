@@ -27,10 +27,6 @@ jobs:
           echo "XORG ---> $XORG<<"
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
           XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
-          #echo "ORG=$(echo $XORG >> $GITHUB_ENV)"
-          ###echo "API: $(echo $XAPI >> $GITHUB_ENV)"         
-          #echo "VER=$(echo $XVER >> $GITHUB_ENV)" 
-          #echo "the API is: ${{ API }}"
           exit 1
 
 # run validation checks, that fail with exit 1
