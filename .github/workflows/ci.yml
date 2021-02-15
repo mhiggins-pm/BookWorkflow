@@ -63,7 +63,7 @@ jobs:
           swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
       
       - name: Set API to default
-      - run: |
+        run: |
           swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
           
       - name: Deploy API documentation to bump.sh
