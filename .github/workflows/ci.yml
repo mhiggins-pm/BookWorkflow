@@ -18,14 +18,13 @@ jobs:
    
       - name: Get the ORG, API, VER from the Branch name
         run: |
-          echo "Variables"
           echo "head ---> ${{ github.event.pull_request.head.ref }}<<"
           string=${{ github.event.pull_request.head.ref }}
           remainder=$string
           XXXX="${remainder%%-*}"; remainder="${remainder#*-}"          
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
           echo "XORG ---> $XORG<<"
-          echo "ORG=y$XORG" >> $GITHUB_ENV
+          echo "ORG=$XORG" >> $GITHUB_ENV
           echo "ORG ---> $ORG<<"          
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
           XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
