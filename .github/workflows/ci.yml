@@ -18,7 +18,7 @@ jobs:
 
       - name: Get the ORG, API, VER from the Branch name
         run: |
-          work=${{ env.GITHUB_BASE_REF }}
+          work=$GITHUB_BASE_REF
           string=${work##*/}
           remainder=$string
           XXXX="${remainder%%-*}"; remainder="${remainder#*-}"          
@@ -28,8 +28,8 @@ jobs:
           echo "ORG=$(echo $XORG >> $GITHUB_ENV)
           echo "API=$(echo $XAPI >> $GITHUB_ENV)          
           echo "VER=$(echo $XVER >> $GITHUB_ENV)  
-          echo "API is: $API 
-          exit  
+          echo "the API is: ${{ env.API }}"
+          exit 1
 
 # run validation checks, that fail with exit 1
 #  - un-redsolved comments
