@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: "12.x"
 
-      - name: Install SwaggerHub cli:  
+      - name: Install SwaggerHub cli  
         run: npm install swaggerhub-cli -g && npm install js-yaml
         
       - name: Install jq utility
