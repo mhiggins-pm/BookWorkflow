@@ -25,6 +25,7 @@ jobs:
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
           echo "XORG ---> $XORG<<"
           echo "ORG=$XORG" >> $GITHUB_ENV
+          echo "GITHUB_ENV ---> $GITHUB_ENV"
           echo "ORG ---> $ORG<<"          
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
           XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
