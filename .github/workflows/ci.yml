@@ -15,15 +15,6 @@ jobs:
 #      - run: sudo apt-get --yes --quiet install jq
 
 # get the ORG, API and VER from the branch name
-   
-      - name: Set the value
-        id: step_one
-        run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
-      - name: Use the value
-        id: step_two
-        run: |
-          echo "${{ env.action_state }}" # This will output 'yellow'
            
       - name: Get the ORG, API, VER from the Branch name
         run: |
@@ -34,10 +25,12 @@ jobs:
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
           echo "XORG ---> $XORG<<"
           echo "ORG=$XORG" >> $GITHUB_ENV
-          echo "GITHUB_ENV ---> $GITHUB_ENV"
-          echo "ORG ---> ${{ env.ORG }}<<"          
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
-          XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
+          XVER="${remainder%%-*}"; remainder="${remainder#*-}" 
+           
+      - name: test it
+        run: |
+          echo "ORG ---> ${{ env.ORG }}<<"    
           exit 1
 
 # run validation checks, that fail with exit 1
