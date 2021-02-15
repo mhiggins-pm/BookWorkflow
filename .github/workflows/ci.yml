@@ -19,8 +19,8 @@ jobs:
       - name: Get the ORG, API, VER from the Branch name
         run: |
           echo "Variables"
-          echo "---> ${{ github.event.pull_request.base.ref }}<<"
-          echo "---> $env.GITHUB_BASE_REF<<"
+          echo "base ---> ${{ github.event.pull_request.base.ref }}<<"
+          echo "head ---> ${{ github.event.pull_request.head.ref }}<<"
           work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
           remainder=$string
