@@ -20,8 +20,8 @@ jobs:
         run: |
           echo "Variables"
           echo " -1 ${{ env.GITHUB_BASE_REF }}"
-          echo " -2 ${{ GITHUB_BASE_REF }}"
-          echo " -3 $GITHUB_BASE_REF"
+ #         echo " -2 ${{ GITHUB_BASE_REF }}"
+ #         echo " -3 $GITHUB_BASE_REF"
           work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
           remainder=$string
