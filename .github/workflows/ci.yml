@@ -11,14 +11,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - run: npm install swaggerhub-cli -g && npm install js-yaml
-      - run: sudo apt-get --yes --quiet install jq
+
+      - name: Install SwaggerHub cli:  
+        run: npm install swaggerhub-cli -g && npm install js-yaml
+        
+      - name: Install jq utility
+        run: sudo apt-get --yes --quiet install jq
 
 # get the ORG, API and VER from the branch name
            
       - name: Get the ORG, API, VER from the Branch name
         run: |
-          echo "head ---> ${{ github.event.pull_request.head.ref }}<<"
+          echo "branch ---> ${{ github.event.pull_request.head.ref }}"
           string=${{ github.event.pull_request.head.ref }}
           remainder=$string
           Xswaggerhub="${remainder%%-*}"; remainder="${remainder#*-}"          
@@ -34,22 +38,31 @@ jobs:
 #  - critical rule violations
 #  - payload Assertion vs. Auto-mock
 
-      - run: chmod +x ./scripts/cicd_check_comments.sh     
-      - run: ./scripts/cicd_check_comments.sh $ORG $API $VER
-        
-      - run: chmod +x ./scripts/cicd_check_validation.sh     
-      - run: ./scripts/cicd_check_validation.sh $ORG $API $VER
-
-      - run: chmod +x ./scripts/cicd_get_auto-mock.sh     
-      - run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$XPATH json ./assertions/$ORG-$API-$VER-$XPATH-get.txt
+      - name: Prepare scripts for execution
+        run: |
+          chmod +x ./scripts/cicd_check_comments.sh  
+          chmod +x ./scripts/cicd_check_validation.sh 
+          chmod +x ./scripts/cicd_get_auto-mock.sh 
+           
+      - name: Check for Open commenets    
+        run: ./scripts/cicd_check_comments.sh $ORG $API $VER
+  
+      - name: Check for Standardization rule violations   
+        run: ./scripts/cicd_check_validation.sh $ORG $API $VER
+  
+      - name: Check for Payload compliance   
+        run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$XPATH json ./assertions/$ORG-$API-$VER-$XPATH-get.txt
         
 # if all checks pass:
 #  - set the API to published 
 #  - saet the API/Version to Defauly
 #  - publish documentation to bump.sh
 
-      - run: |
+      - name: Publish the API
+        run: |
           swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
+      
+      - name: Set API to default
       - run: |
           swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
           
@@ -59,6 +72,7 @@ jobs:
           id: d3df0e2b-b07e-4bab-8aee-4fc8d6daa54f
           token: 67843a6e628f94b2811231c6454116a7
           file: ./yaml-resolved/swagger.yaml
+          
     env:
       HOME: ${{ './scripts' }}
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
