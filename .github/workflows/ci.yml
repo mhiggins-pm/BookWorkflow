@@ -25,6 +25,8 @@ jobs:
           XXXX="${remainder%%-*}"; remainder="${remainder#*-}"          
           XORG="${remainder%%-*}"; remainder="${remainder#*-}"
           echo "XORG ---> $XORG<<"
+          echo "ORG=y$XORG" >> $GITHUB_ENV
+          echo "ORG ---> $ORG<<"          
           XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
           XVER="${remainder%%-*}"; remainder="${remainder#*-}"         
           exit 1
