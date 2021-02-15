@@ -1,8 +1,8 @@
 # swagger-java-client
 
-Book API
+Book API (w/ actions)
 - API version: 1.1.0
-  - Build date: 2021-02-14T18:19:18.737Z[GMT]
+  - Build date: 2021-02-15T10:09:27.935Z[GMT]
 
 API for tracking your books, authors and pub-dates.
 
