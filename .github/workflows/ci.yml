@@ -11,13 +11,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - run: npm install swaggerhub-cli -g && npm install js-yaml
-      - run: sudo apt-get --yes --quiet install jq
+#      - run: npm install swaggerhub-cli -g && npm install js-yaml
+#      - run: sudo apt-get --yes --quiet install jq
 
 # get the ORG, API and VER from the branch name
 
       - name: Get the ORG, API, VER from the Branch name
         run: |
+          echo "Slug variables"
+          echo " - ${{ env.GITHUB_REF_SLUG }}"    
+          echo " - ${{ env.GITHUB_HEAD_REF_SLUG }}"
+          echo " - ${{ env.GITHUB_BASE_REF_SLUG }}"
+          echo " - ${{ env.GITHUB_REPOSITORY_SLUG }}"
           work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
           remainder=$string
