@@ -18,11 +18,10 @@ jobs:
 
       - name: Get the ORG, API, VER from the Branch name
         run: |
-          echo "Slug variables"
-          echo " - ${{ env.GITHUB_REF_SLUG }}"    
-          echo " - ${{ env.GITHUB_HEAD_REF_SLUG }}"
-          echo " - ${{ env.GITHUB_BASE_REF_SLUG }}"
-          echo " - ${{ env.GITHUB_REPOSITORY_SLUG }}"
+          echo "Variables"
+          echo " -1 ${{ env.GITHUB_BASE_REF }}"
+          echo " -2 ${{ GITHUB_BASE_REF }}"
+          echo " -3 $GITHUB_BASE_REF"
           work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
           remainder=$string
