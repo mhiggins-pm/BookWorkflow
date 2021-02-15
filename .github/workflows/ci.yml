@@ -16,9 +16,15 @@ jobs:
 
 # get the ORG, API and VER from the branch name
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+   
       - name: Get the ORG, API, VER from the Branch name
         run: |
           echo "Variables"
+          echo "${{ github.event.pull_request.base.ref }}"
           echo " -1 ${{ GITHUB_BASE_REF }}"
           work=${{ env.GITHUB_BASE_REF }}
           string=${work##*/}
@@ -68,8 +74,10 @@ jobs:
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
       SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
       NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
+      XPATH: ${{ 'book' }}
+      GITHUB_CONTEXT: ${{ toJson(github) }}
 #      ORG: ${{ 'SmartBear_Org' }}
 #      API: ${{ 'Book' }}
 #      VER: ${{ '1.1.0' }}  
-      XPATH: ${{ 'book' }}
-      
+
+     
