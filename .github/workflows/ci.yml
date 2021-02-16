@@ -12,6 +12,8 @@ jobs:
         with:
           node-version: "12.x"
 
+# install required tooling )swaggerhub cli and jq)
+
       - name: Install SwaggerHub cli  
         run: npm install swaggerhub-cli -g && npm install js-yaml
         
