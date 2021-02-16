@@ -65,11 +65,11 @@ jobs:
 
       - name: Publish the API
         run: |
-          swaggerhub api:publish "SmartBear_Org/Book/1.1.0"
+          swaggerhub api:publish "$ORG/$API/$VER"
       
       - name: Set API to default
         run: |
-          swaggerhub api:setdefault "SmartBear_Org/Book/1.1.0"
+          swaggerhub api:setdefault "$ORG/$API/$VER"
           
       - name: Deploy API documentation to bump.sh
         uses: bump-sh/github-action@0.1
