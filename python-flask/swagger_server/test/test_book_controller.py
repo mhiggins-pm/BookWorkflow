@@ -13,8 +13,8 @@ from swagger_server.test import BaseTestCase
 class TestBookController(BaseTestCase):
     """BookController integration test stubs"""
 
-    def test_a12125(self):
-        """Test case for a12125
+    def test_book_get(self):
+        """Test case for book_get
 
         
         """
