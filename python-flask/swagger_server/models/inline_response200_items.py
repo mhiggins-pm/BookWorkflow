@@ -114,5 +114,7 @@ class InlineResponse200Items(Model):
         :param pub_date: The pub_date of this InlineResponse200Items.
         :type pub_date: str
         """
+        if pub_date is None:
+            raise ValueError("Invalid value for `pub_date`, must not be `None`")  # noqa: E501
 
         self._pub_date = pub_date

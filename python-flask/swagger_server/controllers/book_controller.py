@@ -6,8 +6,8 @@ from swagger_server.models.inline_response200 import InlineResponse200  # noqa: 
 from swagger_server import util
 
 
-def a12125():  # noqa: E501
-    """a12125
+def book_get():  # noqa: E501
+    """book_get
 
     List the books # noqa: E501
 
