@@ -2,7 +2,7 @@
 
 Book API (w/ actions)
 - API version: 1.1.0
-  - Build date: 2021-02-16T11:45:30.174Z[GMT]
+  - Build date: 2021-02-16T16:15:00.320Z[GMT]
 
 API for tracking your books, authors and pub-dates.
 
@@ -88,10 +88,10 @@ public class BookApiExample {
 
         BookApi apiInstance = new BookApi();
         try {
-            InlineResponse200 result = apiInstance.a12125();
+            InlineResponse200 result = apiInstance.bookGet();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BookApi#a12125");
+            System.err.println("Exception when calling BookApi#bookGet");
             e.printStackTrace();
         }
     }
@@ -104,7 +104,7 @@ All URIs are relative to *https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/B
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BookApi* | [**a12125**](docs/BookApi.md#a12125) | **GET** /book | 
+*BookApi* | [**bookGet**](docs/BookApi.md#bookGet) | **GET** /book | 
 
 ## Documentation for Models
 

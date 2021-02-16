@@ -40,8 +40,8 @@ public class BookApiTest {
      *          if the Api call fails
      */
     @Test
-    public void a12125Test() throws ApiException {
-        InlineResponse200 response = api.a12125();
+    public void bookGetTest() throws ApiException {
+        InlineResponse200 response = api.bookGet();
 
         // TODO: test validations
     }

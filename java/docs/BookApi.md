@@ -4,11 +4,11 @@ All URIs are relative to *https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/B
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**a12125**](BookApi.md#a12125) | **GET** /book | 
+[**bookGet**](BookApi.md#bookGet) | **GET** /book | 
 
-<a name="a12125"></a>
-# **a12125**
-> InlineResponse200 a12125()
+<a name="bookGet"></a>
+# **bookGet**
+> InlineResponse200 bookGet()
 
 
 
@@ -28,10 +28,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 BookApi apiInstance = new BookApi();
 try {
-    InlineResponse200 result = apiInstance.a12125();
+    InlineResponse200 result = apiInstance.bookGet();
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling BookApi#a12125");
+    System.err.println("Exception when calling BookApi#bookGet");
     e.printStackTrace();
 }
 ```

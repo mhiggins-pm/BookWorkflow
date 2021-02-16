@@ -55,13 +55,13 @@ public class BookApi {
     }
 
     /**
-     * Build call for a12125
+     * Build call for bookGet
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call a12125Call(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call bookGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -103,9 +103,9 @@ public class BookApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call a12125ValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call bookGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = a12125Call(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = bookGetCall(progressListener, progressRequestListener);
         return call;
 
         
@@ -120,8 +120,8 @@ public class BookApi {
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse200 a12125() throws ApiException {
-        ApiResponse<InlineResponse200> resp = a12125WithHttpInfo();
+    public InlineResponse200 bookGet() throws ApiException {
+        ApiResponse<InlineResponse200> resp = bookGetWithHttpInfo();
         return resp.getData();
     }
 
@@ -131,8 +131,8 @@ public class BookApi {
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse200> a12125WithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = a12125ValidateBeforeCall(null, null);
+    public ApiResponse<InlineResponse200> bookGetWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = bookGetValidateBeforeCall(null, null);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -144,7 +144,7 @@ public class BookApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call a12125Async(final ApiCallback<InlineResponse200> callback) throws ApiException {
+    public com.squareup.okhttp.Call bookGetAsync(final ApiCallback<InlineResponse200> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -165,7 +165,7 @@ public class BookApi {
             };
         }
 
-        com.squareup.okhttp.Call call = a12125ValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = bookGetValidateBeforeCall(progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

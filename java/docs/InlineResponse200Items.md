@@ -5,4 +5,4 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** |  | 
 **author** | **String** |  | 
-**pubDate** | **String** |  |  [optional]
+**pubDate** | **String** |  | 
