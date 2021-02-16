@@ -17,6 +17,9 @@ jobs:
       - name: Install SwaggerHub cli  
         run: npm install swaggerhub-cli -g && npm install js-yaml
         
+      - name: Install openapi-diff
+        run: npm install openapi-diff --save-dev
+        
       - name: Install jq utility
         run: sudo apt-get --yes --quiet install jq
 
