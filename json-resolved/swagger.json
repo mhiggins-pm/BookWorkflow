@@ -50,6 +50,9 @@
               }
             }
           },
+          "401" : {
+            "description" : "Access token is missing or invalid"
+          },
           "default" : {
             "description" : "An error occurred.",
             "content" : {
