@@ -714,7 +714,7 @@
   }
 };
             defs["inline_response_200_items"] = {
-  "required" : [ "author", "title" ],
+  "required" : [ "author", "pub-date", "title" ],
   "type" : "object",
   "properties" : {
     "title" : {
@@ -748,8 +748,8 @@
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Book"><a href="#api-Book">API Methods - Book</a></li>
-                    <li data-group="Book" data-name="a12125" class="">
-                      <a href="#api-Book-a12125">a12125</a>
+                    <li data-group="Book" data-name="bookGet" class="">
+                      <a href="#api-Book-bookGet">bookGet</a>
                     </li>
           </ul>
         </nav>
@@ -772,10 +772,10 @@
         <div id="sections">
                 <section id="api-Book">
                   <h1>Book</h1>
-                    <div id="api-Book-a12125">
-                      <article id="api-Book-a12125-0" data-group="User" data-name="a12125" data-version="0">
+                    <div id="api-Book-bookGet">
+                      <article id="api-Book-bookGet-0" data-group="User" data-name="bookGet" data-version="0">
                         <div class="pull-left">
-                          <h1>a12125</h1>
+                          <h1>bookGet</h1>
                           <p></p>
                         </div>
                         <div class="pull-right"></div>
@@ -789,27 +789,27 @@
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Book-a12125-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Book-a12125-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Book-a12125-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Book-a12125-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Book-a12125-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Book-a12125-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Book-a12125-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Book-a12125-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Book-a12125-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Book-a12125-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Book-a12125-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Book-bookGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Book-bookGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Book-bookGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Book-bookGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Book-bookGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Book-bookGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Book-bookGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Book-bookGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Book-bookGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Book-bookGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Book-bookGet-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Book-a12125-0-curl">
+                          <div class="tab-pane active" id="examples-Book-bookGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
  -H "Authorization: Bearer [[accessToken]]"\
 -H "Accept: application/json"\
 "https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.1.0/book"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Book-a12125-0-java">
+                          <div class="tab-pane" id="examples-Book-bookGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -826,17 +826,17 @@ public class BookApiExample {
 
         BookApi apiInstance = new BookApi();
         try {
-            inline_response_200 result = apiInstance.a12125();
+            inline_response_200 result = apiInstance.bookGet();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BookApi#a12125");
+            System.err.println("Exception when calling BookApi#bookGet");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Book-a12125-0-android">
+                          <div class="tab-pane" id="examples-Book-bookGet-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.BookApi;
 
 public class BookApiExample {
@@ -844,25 +844,25 @@ public class BookApiExample {
     public static void main(String[] args) {
         BookApi apiInstance = new BookApi();
         try {
-            inline_response_200 result = apiInstance.a12125();
+            inline_response_200 result = apiInstance.bookGet();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BookApi#a12125");
+            System.err.println("Exception when calling BookApi#bookGet");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Book-a12125-0-groovy">
+  <div class="tab-pane" id="examples-Book-bookGet-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Book-a12125-0-objc">
+                            <div class="tab-pane" id="examples-Book-bookGet-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 BookApi *apiInstance = [[BookApi alloc] init];
 
-[apiInstance a12125WithCompletionHandler: 
+[apiInstance bookGetWithCompletionHandler: 
               ^(inline_response_200 output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -874,7 +874,7 @@ BookApi *apiInstance = [[BookApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Book-a12125-0-javascript">
+                            <div class="tab-pane" id="examples-Book-bookGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BookApiWActions = require('book_api__w_actions');
 var defaultClient = BookApiWActions.ApiClient.instance;
 
@@ -887,14 +887,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.a12125(callback);
+api.bookGet(callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Book-a12125-0-angular">
+                            <!--<div class="tab-pane" id="examples-Book-bookGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Book-a12125-0-csharp">
+                            <div class="tab-pane" id="examples-Book-bookGet-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -903,7 +903,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class a12125Example
+    public class bookGetExample
     {
         public void main()
         {
@@ -913,12 +913,12 @@ namespace Example
 
             try
             {
-                inline_response_200 result = apiInstance.a12125();
+                inline_response_200 result = apiInstance.bookGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling BookApi.a12125: " + e.Message );
+                Debug.Print("Exception when calling BookApi.bookGet: " + e.Message );
             }
         }
     }
@@ -926,7 +926,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Book-a12125-0-php">
+                            <div class="tab-pane" id="examples-Book-bookGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -934,15 +934,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new Swagger\Client\ApiBookApi();
 
 try {
-    $result = $api_instance->a12125();
+    $result = $api_instance->bookGet();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BookApi->a12125: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BookApi->bookGet: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Book-a12125-0-perl">
+                            <div class="tab-pane" id="examples-Book-bookGet-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::BookApi;
@@ -951,15 +951,15 @@ use WWW::SwaggerClient::BookApi;
 my $api_instance = WWW::SwaggerClient::BookApi->new();
 
 eval { 
-    my $result = $api_instance->a12125();
+    my $result = $api_instance->bookGet();
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling BookApi->a12125: $@\n";
+    warn "Exception when calling BookApi->bookGet: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Book-a12125-0-python">
+                            <div class="tab-pane" id="examples-Book-bookGet-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -971,10 +971,10 @@ from pprint import pprint
 api_instance = swagger_client.BookApi()
 
 try: 
-    api_response = api_instance.a12125()
+    api_response = api_instance.book_get()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling BookApi->a12125: %s\n" % e)</code></pre>
+    print("Exception when calling BookApi->bookGet: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -990,14 +990,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-a12125-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-bookGet-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-a12125-200-schema">
-                                  <div id='responses-a12125-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-bookGet-200-schema">
+                                  <div id='responses-bookGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -1023,41 +1023,33 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-a12125-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-a12125-200-schema-200');
+                                        $('#responses-bookGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-bookGet-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-a12125-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-bookGet-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
                             <h3> Status: 401 - Access token is missing or invalid </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: default - An error occurred. </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-a12125-default-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-bookGet-401-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-a12125-default-schema">
-                                  <div id='responses-a12125-default-schema-default' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-bookGet-401-schema">
+                                  <div id='responses-bookGet-401-schema-401' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "An error occurred.",
+  "description" : "Access token is missing or invalid",
   "content" : {
     "application/json" : {
       "schema" : {
@@ -1079,14 +1071,62 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-a12125-default-schema-data').val(stringify(schema));
-                                        var result = $('#responses-a12125-default-schema-default');
+                                        $('#responses-bookGet-401-schema-data').val(stringify(schema));
+                                        var result = $('#responses-bookGet-401-schema-401');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-a12125-default-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-bookGet-401-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: default - An un-expected error response occurred. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-bookGet-default-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-bookGet-default-schema">
+                                  <div id='responses-bookGet-default-schema-default' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "An un-expected error response occurred.",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorModel"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-bookGet-default-schema-data').val(stringify(schema));
+                                        var result = $('#responses-bookGet-default-schema-default');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-bookGet-default-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
