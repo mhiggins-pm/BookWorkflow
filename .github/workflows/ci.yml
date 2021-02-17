@@ -38,6 +38,8 @@ jobs:
           echo "ORG=$XORG" >> $GITHUB_ENV 
           echo "API=$XAPI" >> $GITHUB_ENV          
           echo "VER=$XVER" >> $GITHUB_ENV
+          Zversion=getVersion()
+          echo $Zversion
 
 # run validation checks, that fail with exit 1
 #  - un-redsolved comments
