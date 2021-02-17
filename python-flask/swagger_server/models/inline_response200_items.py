@@ -14,30 +14,25 @@ class InlineResponse200Items(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, title: str=None, author: str=None, pub_date: str=None):  # noqa: E501
+    def __init__(self, title: str=None, author: str=None):  # noqa: E501
         """InlineResponse200Items - a model defined in Swagger
 
         :param title: The title of this InlineResponse200Items.  # noqa: E501
         :type title: str
         :param author: The author of this InlineResponse200Items.  # noqa: E501
         :type author: str
-        :param pub_date: The pub_date of this InlineResponse200Items.  # noqa: E501
-        :type pub_date: str
         """
         self.swagger_types = {
             'title': str,
-            'author': str,
-            'pub_date': str
+            'author': str
         }
 
         self.attribute_map = {
             'title': 'title',
-            'author': 'author',
-            'pub_date': 'pub-date'
+            'author': 'author'
         }
         self._title = title
         self._author = author
-        self._pub_date = pub_date
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse200Items':
@@ -95,26 +90,3 @@ class InlineResponse200Items(Model):
             raise ValueError("Invalid value for `author`, must not be `None`")  # noqa: E501
 
         self._author = author
-
-    @property
-    def pub_date(self) -> str:
-        """Gets the pub_date of this InlineResponse200Items.
-
-
-        :return: The pub_date of this InlineResponse200Items.
-        :rtype: str
-        """
-        return self._pub_date
-
-    @pub_date.setter
-    def pub_date(self, pub_date: str):
-        """Sets the pub_date of this InlineResponse200Items.
-
-
-        :param pub_date: The pub_date of this InlineResponse200Items.
-        :type pub_date: str
-        """
-        if pub_date is None:
-            raise ValueError("Invalid value for `pub_date`, must not be `None`")  # noqa: E501
-
-        self._pub_date = pub_date

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Book API (w/ actions)
-  description: API for tracking your books, authors and pub-dates.
+  description: API for tracking your books
   termsOfService: https://app.swaggerhub.com/eula
   contact:
     name: Micheal Higgins
@@ -9,29 +9,25 @@ info:
     email: micheal.higgins@smartbear.com
   license:
     name: SmartBear License
-    url: http://www.smartbear.com/licenses/2021/LICENSE-2.0.html
-  version: 1.1.0
-  x-jira-ticket: SNOP-2216
+    url: http://www.smartbear.com/licenses/2020/LICENSE-2.0.html
+  version: 1.0.0
+  x-jira-ticket: XXX-SNOP-2216
   x-security-approval: required
   x-filters:
     status: Devlopment
     business-unit: Retail
     business-domain: Books and Magazines
 servers:
-- url: https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.1.0
+- url: https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.0.0
   description: SwaggerHub API Auto Mocking
 tags:
-- name: Book
-  description: Book
 - name: SmartBear
   description: SmartBear
+- name: Book
 paths:
-  /book:
+  /books:
     get:
-      tags:
-      - Book
-      description: List the books
-      operationId: book_get
+      operationId: books_get
       responses:
         "200":
           description: Success
@@ -39,12 +35,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inline_response_200'
-        "401":
-          description: Access token is missing or invalid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorModel'
         default:
           description: An un-expected error response occurred.
           content:
@@ -53,7 +43,7 @@ paths:
                 $ref: '#/components/schemas/ErrorModel'
       security:
       - bearerAuth: []
-      x-openapi-router-controller: swagger_server.controllers.book_controller
+      x-openapi-router-controller: swagger_server.controllers.default_controller
 components:
   schemas:
     ErrorModel:
@@ -75,16 +65,13 @@ components:
             $ref: '#/components/schemas/inline_response_200_items'
       example:
         items:
-        - author: Robert Heinlein
+        - author: Robert A. Heinlein
           title: Time Enough For Love
-          pub-date: 22-01-2021
-        - author: Robert Heinlein
+        - author: Robert A. Heinlein
           title: Time Enough For Love
-          pub-date: 22-01-2021
     inline_response_200_items:
       required:
       - author
-      - pub-date
       - title
       type: object
       properties:
@@ -93,18 +80,15 @@ components:
           example: Time Enough For Love
         author:
           type: string
-          example: Robert Heinlein
-        pub-date:
-          type: string
-          example: 22-01-2021
+          example: Robert A. Heinlein
       example:
-        author: Robert Heinlein
+        author: Robert A. Heinlein
         title: Time Enough For Love
-        pub-date: 22-01-2021
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
       x-bearerInfoFunc: swagger_server.controllers.authorization_controller.check_bearerAuth
+x-apigee-id: Book
 
