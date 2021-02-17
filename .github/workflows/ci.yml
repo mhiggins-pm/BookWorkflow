@@ -51,6 +51,7 @@ jobs:
           chmod +x ./scripts/cicd_check_validation.sh 
           chmod +x ./scripts/cicd_get_auto-mock.sh 
           chmod +x ./scripts/breaking_changes.sh
+          echo $OEG $API $VER
                     
       - name: Check - Open collaboration commenets    
         run: ./scripts/cicd_check_comments.sh $ORG $API $VER
