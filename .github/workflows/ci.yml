@@ -28,17 +28,19 @@ jobs:
           chmod +x ./scripts/cicd_check_comments.sh  
           chmod +x ./scripts/cicd_check_validation.sh 
           chmod +x ./scripts/cicd_get_auto-mock.sh 
+          chmod +x ./scripts/cicd_get_version.sh
           chmod +x ./scripts/breaking_changes.sh
-          
-# get the O VER from the yaml file
-           
-      - name: Get the Version from the yaml file
-        run: |
-          echo "branch ---> ${{ github.event.pull_request.head.ref }}"
-          XVER=$(./scripts/cicd_get_version.sh ./yamml-resolved/swagger.yaml yaml)
-          echo "version ---> $XVER"
-          echo "VER=$XVER" >> $GITHUB_ENV
 
+# get the API Version from the yaml file
+           
+      - name: Get the API Version from the yaml file
+        run: |
+          XVER=$(./scripts/cicd_get_version.sh ./yamml-resolved/swagger.yaml yaml)
+          echo "VER=$XVER" >> $GITHUB_ENV
+          echo "branch ---> ${{ github.event.pull_request.head.ref }}"
+          echo "api ---> ${{ $API }}
+          echo "version ---> ${{ VER }}
+           
 # alternate mode: use the branch name
 #          string=${{ github.event.pull_request.head.ref }}
 #          remainder=$string
