@@ -35,7 +35,7 @@ jobs:
            
       - name: Get the API Version from the yaml file
         run: |
-          XVER=$(./scripts/cicd_get_version.sh ./yamml-resolved/swagger.yaml yaml)
+          XVER=$(./scripts/cicd_get_version.sh ./yaml-resolved/swagger.yaml yaml)
           echo "VER=$XVER" >> $GITHUB_ENV
           echo "branch ---> ${{ github.event.pull_request.head.ref }}"
           echo "api ---> $API"
