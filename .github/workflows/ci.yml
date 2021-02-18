@@ -23,21 +23,31 @@ jobs:
       - name: Install jq utility
         run: sudo apt-get --yes --quiet install jq
 
-# get the ORG, API and VER from the branch name
-#   assumes that the branch name is Organization-Api-vVerision
+      - name: Prepare scripts for execution
+        run: |
+          chmod +x ./scripts/cicd_check_comments.sh  
+          chmod +x ./scripts/cicd_check_validation.sh 
+          chmod +x ./scripts/cicd_get_auto-mock.sh 
+          chmod +x ./scripts/breaking_changes.sh
+          
+# get the O VER from the yaml file
            
-      - name: Get the ORG, API and VER from the Branch name
+      - name: Get the Version from the yaml file
         run: |
           echo "branch ---> ${{ github.event.pull_request.head.ref }}"
-          string=${{ github.event.pull_request.head.ref }}
-          remainder=$string
-          Xswaggerhub="${remainder%%-*}"; remainder="${remainder#*-}"          
-          XORG="${remainder%%-*}"; remainder="${remainder#*-}"
-          XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
-          XVER="${remainder%%-*}"; remainder="${remainder#*-}"
-          echo "ORG=$XORG" >> $GITHUB_ENV 
-          echo "API=$XAPI" >> $GITHUB_ENV          
+          XVER=$(./scripts/cicd_get_version.sh ./yamml-resolved/swagger.yaml yaml)
           echo "VER=$XVER" >> $GITHUB_ENV
+
+# alternate mode: use the branch name
+#          string=${{ github.event.pull_request.head.ref }}
+#          remainder=$string
+#          Xswaggerhub="${remainder%%-*}"; remainder="${remainder#*-}"          
+#          XORG="${remainder%%-*}"; remainder="${remainder#*-}"
+#          XAPI="${remainder%%-*}"; remainder="${remainder#*-}"
+#          XVER="${remainder%%-*}"; remainder="${remainder#*-}"
+#          echo "ORG=$XORG" >> $GITHUB_ENV 
+#          echo "API=$XAPI" >> $GITHUB_ENV          
+#          echo "VER=$XVER" >> $GITHUB_ENV
 
 # run validation checks, that fail with exit 1
 #  - un-redsolved comments
@@ -45,13 +55,6 @@ jobs:
 #  - payload Assertion vs. Auto-mock
 #  - breaking changes from version 1.0.0
 
-      - name: Prepare scripts for execution
-        run: |
-          chmod +x ./scripts/cicd_check_comments.sh  
-          chmod +x ./scripts/cicd_check_validation.sh 
-          chmod +x ./scripts/cicd_get_auto-mock.sh 
-          chmod +x ./scripts/breaking_changes.sh
-                    
       - name: Check - Open collaboration commenets    
         run: ./scripts/cicd_check_comments.sh $ORG $API $VER
   
@@ -89,5 +92,7 @@ jobs:
       SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_KEY }}
       SWAGGERHUB_URL: ${{ 'https://swaggerhub.mwhiggins.com/v1' }}
       NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
+      ORG: ${{ 'SmartBear_Org' }}
+      API: ${{ 'Book'}
       XPATH: ${{ 'book' }}
    
