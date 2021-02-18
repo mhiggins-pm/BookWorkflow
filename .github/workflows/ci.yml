@@ -38,7 +38,7 @@ jobs:
           XVER=$(./scripts/cicd_get_version.sh ./yamml-resolved/swagger.yaml yaml)
           echo "VER=$XVER" >> $GITHUB_ENV
           echo "branch ---> ${{ github.event.pull_request.head.ref }}"
-          echo "api ---> ${{ $API }}"
+          echo "api ---> ${{ API }}"
           echo "version ---> ${{ VER }}"
            
 # alternate mode: use the branch name
