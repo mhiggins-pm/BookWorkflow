@@ -65,7 +65,7 @@ jobs:
         run: ./scripts/cicd_check_validation.sh $ORG $API $VER
   
       - name: Check - Payload compliance   
-        run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER /$XPATH json ./assertions/$ORG-$API-$VER-$XPATH-get.txt
+        run: ./scripts/cicd_get_auto-mock.sh $ORG $API $VER $XPATH json ./assertions/$ORG-$API-$VER-$XPATH-get.txt
   
       - name: Check - Breaking changes but Proceed set to yes 
         run: ./scripts/breaking_changes.sh $ORG $API $VER 1.0.0 y y
@@ -97,5 +97,5 @@ jobs:
       NODE_EXTRA_CA_CERTS: ${{ './.ssh/ca_bundle.crt' }}
       ORG: ${{ 'SmartBear_Org' }}
       API: ${{ 'Book'}}
-      XPATH: ${{ 'book' }}
+      XPATH: ${{ '/book' }}
    
