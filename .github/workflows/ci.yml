@@ -60,6 +60,11 @@ jobs:
   
       - name: Check - Breaking changes but Proceed set to yes 
         run: ./scripts/breaking_changes.sh $ORG $API $VER 1.0.0 y y
+
+# run the ReadyAPI test suite on TestEngine
+
+
+
                 
 # if all checks pass:
 #  - set the API to published 
