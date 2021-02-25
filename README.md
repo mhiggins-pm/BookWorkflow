@@ -2,7 +2,7 @@
 
 ## Here are the steps of the GitHub Actions workflow CI.
 
-API: SmartBear_Org/API/1.1.0
+API: SmartBear_Org/Book
 
 Initialize:
   - Install Node.js
