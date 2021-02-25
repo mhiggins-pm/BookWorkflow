@@ -14,6 +14,7 @@ Start a PR, it will fail if:
   - Any Standardization Errors are detected
   - The Auto-mock payload does not match the stored Assertion
   - Report only: Breaking changes (no fail on true)
+  - Run the ReadyAPI test suite on TestEngine server
 
 If no failures are detected, the PR will complete:
   - Set the API to Published
