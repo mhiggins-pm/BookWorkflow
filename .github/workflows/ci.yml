@@ -63,8 +63,8 @@ jobs:
 
 # run the ReadyAPI test suite on TestEngine
 
-
-
+#      - name: Run ReadyAPI Test Suite on TestEngine
+#        run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD ./readyapi-tests/SwaggerHub-LoadMaster-readyapi-project.xml
                 
 # if all checks pass:
 #  - set the API to published 
@@ -94,4 +94,6 @@ jobs:
       ORG: ${{ 'SmartBear_Org' }}
       API: ${{ 'Book' }}
       XPATH: ${{ '/book' }}
+      TE_USER: ${{ 'mhiggins' }}
+      TE_PASSWORD: $$ {{ secrets.TE_PASSWORD }}
    
