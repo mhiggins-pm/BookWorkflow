@@ -77,10 +77,10 @@ components:
         items:
         - author: Robert Heinlein
           title: Time Enough For Love
-          pub-date: 22-01-2021
+          pub-date: 12-01-1957
         - author: Robert Heinlein
           title: Time Enough For Love
-          pub-date: 22-01-2021
+          pub-date: 12-01-1957
     inline_response_200_items:
       required:
       - author
@@ -96,11 +96,11 @@ components:
           example: Robert Heinlein
         pub-date:
           type: string
-          example: 22-01-2021
+          example: 12-01-1957
       example:
         author: Robert Heinlein
         title: Time Enough For Love
-        pub-date: 22-01-2021
+        pub-date: 12-01-1957
   securitySchemes:
     bearerAuth:
       type: http
