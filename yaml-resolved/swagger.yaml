@@ -87,7 +87,7 @@ components:
           example: Robert Heinlein
         pub-date:
           type: string
-          example: 22-01-2021
+          example: 12-01-1957
   securitySchemes:
     bearerAuth:
       type: http
