@@ -79,7 +79,7 @@ STATUS=$(echo $STRING | jq '.status' | tr -d \")
 
 while [ $STATUS == "RUNNING" ]; do
 
-   STRING=$(curl -s -X GET "$TE_FQDN/testjobs/$JOBID/report" \ 
+   STRING=$(curl -s -X GET "$TE_FQDN/testjobs/$JOBID/report" \
                     -H  "accept: application/json"           \
                     -u "$TE_USER:$TE_PASSWORD")
 
