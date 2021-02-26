@@ -29,7 +29,8 @@ jobs:
           chmod +x ./scripts/cicd_check_validation.sh 
           chmod +x ./scripts/cicd_get_auto-mock.sh 
           chmod +x ./scripts/cicd_get_version.sh
-          chmod +x ./scripts/breaking_changes.sh
+          chmod +x ./scripts/breaking_changes.sh          
+          chmod +x ./scripts/test_engine.sh
 
 # get the API Version from the yaml file
            
