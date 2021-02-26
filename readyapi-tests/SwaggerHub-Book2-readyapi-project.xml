@@ -73,6 +73,17 @@
             <con:endpoint>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book2/1.0.0</con:endpoint>
             <con:request/>
             <con:originalUri>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book2/1.0.0/book</con:originalUri>
+            <con:assertion type="Response SLA Assertion" id="6d7769b6-1e2c-4951-9fa4-9fb03ccd34aa" name="Response SLA">
+              <con:configuration>
+                <SLA>1000</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Valid HTTP Status Codes" id="462ad894-f453-4091-8756-00791435baa6" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
             <con:credentials>
               <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
               <con:authType>No Authorization</con:authType>
