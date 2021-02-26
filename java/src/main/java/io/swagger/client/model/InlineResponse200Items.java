@@ -25,7 +25,7 @@ import java.io.IOException;
  * InlineResponse200Items
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-17T00:27:29.996Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-26T13:59:04.601Z[GMT]")
 public class InlineResponse200Items {
   @SerializedName("title")
   private String title = null;
@@ -81,7 +81,7 @@ public class InlineResponse200Items {
    * Get pubDate
    * @return pubDate
   **/
-  @Schema(example = "22-01-2021", required = true, description = "")
+  @Schema(example = "12-01-1957", required = true, description = "")
   public String getPubDate() {
     return pubDate;
   }
