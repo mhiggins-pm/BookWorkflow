@@ -96,7 +96,7 @@ jobs:
       API: ${{ 'Book' }}
       XPATH: ${{ '/book' }}
       TE_USER: ${{ 'mhiggins' }}
-      TE_PASSWORD: $$ {{ secrets.TE_PASSWORD }}
+      TE_PASSWORD: ${{ secrets.TE_PASSWORD }}
       
       
    
