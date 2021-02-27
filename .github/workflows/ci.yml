@@ -29,7 +29,8 @@ jobs:
           chmod +x ./scripts/cicd_check_validation.sh 
           chmod +x ./scripts/cicd_get_auto-mock.sh 
           chmod +x ./scripts/cicd_get_version.sh
-          chmod +x ./scripts/breaking_changes.sh
+          chmod +x ./scripts/breaking_changes.sh          
+          chmod +x ./scripts/test_engine.sh
 
 # get the API Version from the yaml file
            
@@ -64,7 +65,7 @@ jobs:
 # run the ReadyAPI test suite on TestEngine
 
       - name: Check - Run ReadyAPI Test Suite on TestEngine
-        run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD ./readyapi-tests/SwaggerHub-Book2-readyapi-project.xml
+        run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD ./readyapi-tests/SwaggerHub-Book-readyapi-project.xml
                 
 # if all checks pass:
 #  - set the API to published 
@@ -95,7 +96,7 @@ jobs:
       API: ${{ 'Book' }}
       XPATH: ${{ '/book' }}
       TE_USER: ${{ 'mhiggins' }}
-      TE_PASSWORD: $$ {{ secrets.TE_PASSWORD }}
+      TE_PASSWORD: ${{ secrets.TE_PASSWORD }}
       
       
    
