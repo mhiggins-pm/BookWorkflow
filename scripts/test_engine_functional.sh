@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# test_engine
+# test_engine_functional
 #
-# This script sends a ReadyAPI Test Suite to a TestEngine server and
-# reports the sttus of the tests.
+# This script sends a ReadyAPI FUNCTIONAL Test Suite to a TestEngine server 
+# and reports the status of the tests.
 #
 # Suitable for ci/cd pipelines (returns exit 1 on any test failure)
 #
@@ -13,7 +13,9 @@
 
 RELEASE="v1.0.0"
 echo " "
-echo "test_engine  ${RELEASE} - `date`"
+echo "test_engine_functional  ${RELEASE} - `date`"
+
+SLEEP_TIME=2
 
 ###################################################################################################
 # read config file
@@ -45,7 +47,7 @@ then
    echo " "
    echo "Incorrect command line arguements."
    echo " "
-   echo "usage: ./test_engine.sh <te-user> <te-password> <rapi-project>"
+   echo "usage: ./test_engine_functional.sh <te-user> <te-password> <rapi-project>"
    echo " "
    exit 1
 fi
@@ -65,8 +67,11 @@ STRING=$(curl -s -X POST "$TE_FQDN/testjobs?testSuiteName=TestSuite%201" \
                  --data-binary "@"$TEST_SUITE)
 
 JOBID=$(echo $STRING | jq '.testjobId' | tr -d \")
+
 echo " "
 echo "TestEngine jobId:" $JOBID
+echo "Functional suite in: $TEST_SUITE"
+echo " "
 
 ###################################################################################################
 # poll the status of the job
@@ -85,6 +90,11 @@ while [ $STATUS == "RUNNING" ]; do
 
    STATUS=$(echo $STRING | jq '.status' | tr -d \")
 
+   if [ $STATUS == "RUNNING" ]; then
+      echo "  $STATUS, sleep: $SLEEP_TIME"
+      sleep $SLEEP_TIME
+   fi
+
 done
 
 ###################################################################################################
@@ -101,7 +111,6 @@ STRING=($(echo $STRING | jq '.testSuiteResultReports[] | .testCaseResultReports[
 ###################################################################################################
 # report and determine overall status for exit
 
-echo " "
 printf "%-5.5s %-30.30s %-6.6s\n" "Step" "Test name" "Status"
 printf "%-5.5s %-30.30s %-6.6s\n" "----" "----------------------------" "------"
 
