@@ -37,6 +37,15 @@ else
 fi
 
 ###################################################################################################
+# test to see if the SwaggerHub CLI is installed
+
+if swaggerhub --help &> /dev/null; then
+   CLI="true"
+else
+   CLI="false"
+fi
+
+###################################################################################################
 # check that jq is installed
 
 if ! jq --help &> /dev/null; then
@@ -54,15 +63,6 @@ if ! npx openapi-diff --help &> /dev/null; then
    exit 1
 fi
 
-###################################################################################################
-# test to see if the SwaggerHub CLI is installed
-
-if swaggerhub --help &> /dev/null; then
-   CLI="true"
-else
-   CLI="false"
-fi
-
 ######################################################################################################
 # process the command line arguements
 
@@ -78,7 +78,7 @@ then
    echo "   Report:"
    echo "      y - display the full Report"
    echo "      n - no Report is displayed"
-   exit
+   exit 1
 fi
 
 ORG=$1
@@ -94,7 +94,7 @@ SHOW=$6
 if [ $VER1 == $VER2 ]; then
   echo " "
   echo "Cannot compare the same Version"
-  exit
+  exit 1
 fi
 
 ###################################################################################################
@@ -105,7 +105,7 @@ case $PROCEED in
    n) VALID="true";;
    *) echo " "
       echo "Invalid Proceed option (y|n)"
-      exit;;
+      exit 1;;
 esac
 
 case $SHOW in
@@ -113,7 +113,7 @@ case $SHOW in
    n) VALID="true";;
    *) echo " "
       echo "Invalid Report option (y|n)"
-      exit;;
+      exit 1;;
 esac
 
 ###################################################################################################
@@ -135,12 +135,12 @@ fi
 
 if [ $CLI == "true" ]; then
 
-   STRING1=$(swaggerhub api:get $ORG/$API/$VER1 --json)
+   STRING1=$(swaggerhub api:get $ORG/$API/$VER1 --json --resolved)
 
 else
 
-   STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
-                      -H "accept: application/json"                            \
+   STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER1/swagger.json?pretty=false&resolved=true" \
+                      -H "accept: application/json"                                                       \
                       -H "Authorization: Bearer $API_KEY")
 fi
 
@@ -162,12 +162,12 @@ echo "   API: _$ORG-$API-$VER1.json - extracted"
 
 if [ $CLI == "true" ]; then
 
-   STRING1=$(swaggerhub api:get $ORG/$API/$VER2 --json)
+   STRING1=$(swaggerhub api:get $ORG/$API/$VER2 --json --resolved)
 
 else
 
-   STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER/swagger.json" \
-                      -H "accept: application/json"                            \
+   STRING1=$(curl -sk -X GET "$REGISTRY_FQDN/apis/$ORG/$API/$VER2/swagger.json?pretty=false&resolved=true" \
+                      -H "accept: application/json"                                                       \
                       -H "Authorization: Bearer $API_KEY")
 fi
 
@@ -190,7 +190,7 @@ STRING1=$(npx openapi-diff _$ORG-$API-$VER1.json _$ORG-$API-$VER2.json > _$ORG-$
 REPORT=$(cat _$ORG-$API.txt)
 
 X1=$(cat _$ORG-$API.txt | grep breakingDifferencesFound)
-X2="{ $X1 }"
+X2="{ $X1 }" # make it json
 BREAKING=$(echo $X2 | tr -d ',' | jq '.breakingDifferencesFound')
 
 ######################################################################################################
