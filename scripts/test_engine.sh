@@ -81,8 +81,9 @@ if [ $TE_TYPE == "functional" ]; then
    STRING=$(curl -s -X POST "$TE_FQDN/testjobs?testSuiteName=TestSuite%201" \
                     -H "Content-Type: application/xml"                      \
                     -u "$TE_USER:$TE_PASSWORD"                              \
-                 --data-binary "@"$PROJECT_FILE)
+                    --data-binary "@"$PROJECT_FILE)
    SLEEP_TIME=2
+
 else
 
    STRING=$(curl -s -X POST "$TE_FQDN/testjobs?securityTestName=SecurityTest%201" \
@@ -90,13 +91,14 @@ else
                     -u "$TE_USER:$TE_PASSWORD"                                    \
                     --data-binary "@"$PROJECT_FILE)
    SLEEP_TIME=60
+
 fi
 
 JOBID=$(echo $STRING | jq '.testjobId' | tr -d \")
 
 echo " "
-echo "TestEngine jobId:" $JOBID
-echo "Functional suite in: $PROJECT_FILE"
+echo "TestEngine jobId : $JOBID"
+echo "Test suite in    : $PROJECT_FILE"
 echo "Poling time sleep: $SLEEP_TIME"
 echo " "
 
