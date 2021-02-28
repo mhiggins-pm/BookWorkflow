@@ -30,8 +30,7 @@ jobs:
           chmod +x ./scripts/cicd_get_auto-mock.sh 
           chmod +x ./scripts/cicd_get_version.sh
           chmod +x ./scripts/breaking_changes.sh          
-          chmod +x ./scripts/test_engine_functional.sh
-          chmod +x ./scripts/test_engine_security.sh
+          chmod +x ./scripts/test_engine.sh
 
 # get the API Version from the yaml file
            
@@ -63,10 +62,13 @@ jobs:
       - name: Check - Breaking changes but Proceed set to yes 
         run: ./scripts/breaking_changes.sh $ORG $API $VER 1.0.0 y y
 
-# run the ReadyAPI test suite on TestEngine
+# run the ReadyAPI test suites on TestEngine
 
-      - name: Check - Run ReadyAPI Test Suite on TestEngine
-        run: ./scripts/test_engine_functional.sh $TE_USER $TE_PASSWORD ./readyapi-tests/SwaggerHub-Book-readyapi-project.xml
+      - name: Check - Run ReadyAPI Functional Test Suite on TestEngine
+        run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD functional ./readyapi-tests/SwaggerHub-Book-readyapi-project.xml
+                
+      - name: Check - Run ReadyAPI Secutity Test Suite on TestEngine
+        run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD security ./readyapi-tests/SwaggerHub-Book-readyapi-project.xml
                 
 # if all checks pass:
 #  - set the API to published 
@@ -98,6 +100,4 @@ jobs:
       XPATH: ${{ '/book' }}
       TE_USER: ${{ 'mhiggins' }}
       TE_PASSWORD: ${{ secrets.TE_PASSWORD }}
-      
-      
-   
+

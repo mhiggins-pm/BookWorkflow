@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# test_engine_functional
+# test_engine
 #
-# This script sends a ReadyAPI FUNCTIONAL Test Suite to a TestEngine server 
+# This script sends a ReadyAPI Test Suite to a TestEngine server 
 # and reports the status of the tests.
 #
 # Suitable for ci/cd pipelines (returns exit 1 on any test failure)
@@ -13,9 +13,7 @@
 
 RELEASE="v1.0.0"
 echo " "
-echo "test_engine_functional  ${RELEASE} - `date`"
-
-SLEEP_TIME=2
+echo "test_engine  ${RELEASE} - `date`"
 
 ###################################################################################################
 # read config file
@@ -39,38 +37,67 @@ else
    exit 1
 fi
 
+TE_FQDN="http://testengine:8080/api/v1"
+
 ###################################################################################################
 # process command line arguements
 
-if [ $# -ne 3 ]
+if [ $# -ne 4 ]
 then
    echo " "
    echo "Incorrect command line arguements."
    echo " "
-   echo "usage: ./test_engine_functional.sh <te-user> <te-password> <rapi-project>"
+   echo "usage: ./test_engine_functional.sh <te-user> <te-password> <test_type> <project-file>"
    echo " "
    exit 1
 fi
 
 TE_USER=$1
 TE_PASSWORD=$2
-TEST_SUITE=$3
+TE_TYPE=$3
+PROJECT_FILE=$4
 
-TE_FQDN="http://testengine:8080/api/v1"
+case $TE_TYPE in
+   functional) OK=true;;
+   security)   OK=true;;
+   *)     echo " ";
+          echo "<test_type> must be one of functional, security";
+          exit 1;;
+esac
+
+###################################################################################################
+# check for the project file
+
+if [ ! -f $PROJECT_FILE ]; then
+   echo " "
+   echo "<project-file> not found"
+   exit 1;
+fi
 
 ###################################################################################################
 # begin - send the test suite to the testengine
 
-STRING=$(curl -s -X POST "$TE_FQDN/testjobs?testSuiteName=TestSuite%201" \
-                 -H "Content-Type: application/xml"                      \
-                 -u "$TE_USER:$TE_PASSWORD"                              \
-                 --data-binary "@"$TEST_SUITE)
+if [ $TE_TYPE == "functional" ]; then
+   STRING=$(curl -s -X POST "$TE_FQDN/testjobs?testSuiteName=TestSuite%201" \
+                    -H "Content-Type: application/xml"                      \
+                    -u "$TE_USER:$TE_PASSWORD"                              \
+                 --data-binary "@"$PROJECT_FILE)
+   SLEEP_TIME=2
+else
+
+   STRING=$(curl -s -X POST "$TE_FQDN/testjobs?securityTestName=SecurityTest%201" \
+                    -H "Content-Type: application/xml"                            \
+                    -u "$TE_USER:$TE_PASSWORD"                                    \
+                    --data-binary "@"$PROJECT_FILE)
+   SLEEP_TIME=60
+fi
 
 JOBID=$(echo $STRING | jq '.testjobId' | tr -d \")
 
 echo " "
 echo "TestEngine jobId:" $JOBID
-echo "Functional suite in: $TEST_SUITE"
+echo "Functional suite in: $PROJECT_FILE"
+echo "Poling time sleep: $SLEEP_TIME"
 echo " "
 
 ###################################################################################################
@@ -91,11 +118,15 @@ while [ $STATUS == "RUNNING" ]; do
    STATUS=$(echo $STRING | jq '.status' | tr -d \")
 
    if [ $STATUS == "RUNNING" ]; then
-      echo "  $STATUS, sleep: $SLEEP_TIME"
+      echo "  status: $STATUS, sleep: $SLEEP_TIME"
       sleep $SLEEP_TIME
+   else
+      echo "  status: $STATUS"
    fi
 
 done
+
+echo " "
 
 ###################################################################################################
 # get the detail status of the job steps
