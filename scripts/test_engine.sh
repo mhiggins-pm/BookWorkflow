@@ -29,15 +29,14 @@ if [ -f $CONFIG_FILE ]; then
    API_KEY=$(echo $BUFFER | jq -r '.api_key')
    ADMIN_USERNAME=$(echo $BUFFER | jq -r '.admin_username')
    DEFAULT_ORG=$(echo $BUFFER | jq -r '.default_org')
-##   TE_USER=
-##   TE_FQDN=
 else
    echo " "
    echo "No Config file found, please run make_swaggerhub_config.sh"
    exit 1
 fi
 
-TE_FQDN="http://testengine:8080/api/v1"
+TE_FQDN="http://testengine.mwhiggins.com:8080/api/v1"
+##   TE_USER=
 
 ###################################################################################################
 # process command line arguements
