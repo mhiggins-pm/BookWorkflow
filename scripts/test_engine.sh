@@ -105,13 +105,9 @@ echo " "
 ###################################################################################################
 # poll the status of the job
 
-STRING=$(curl -s -X GET "$TE_FQDN/testjobs/$JOBID/report" \
-                 -H  "accept: application/json"           \
-                 -u "$TE_USER:$TE_PASSWORD")
+STATUS="get"
 
-STATUS=$(echo $STRING | jq '.status' | tr -d \")
-
-while [ $STATUS == "RUNNING" ]; do
+while [ true ]; do
 
    STRING=$(curl -s -X GET "$TE_FQDN/testjobs/$JOBID/report" \
                     -H  "accept: application/json"           \
@@ -124,6 +120,7 @@ while [ $STATUS == "RUNNING" ]; do
       sleep $SLEEP_TIME
    else
       echo "  status: $STATUS"
+      break
    fi
 
 done
@@ -132,12 +129,6 @@ echo " "
 
 ###################################################################################################
 # get the detail status of the job steps
-
-STRING=$(curl -s -X GET "$TE_FQDN/testjobs/$JOBID/report" \
-                 -H  "accept: application/json"           \
-                 -u "$TE_USER:$TE_PASSWORD")
-
-STATUS=$(echo $STRING | jq '.status' | tr -d \")
 
 STRING=($(echo $STRING | jq '.testSuiteResultReports[] | .testCaseResultReports[] | .testStepResultReports[] | .testStepName + ":" + .assertionStatus'))
 
