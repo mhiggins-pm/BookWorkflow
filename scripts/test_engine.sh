@@ -41,12 +41,12 @@ TE_FQDN="http://testengine.mwhiggins.com:8080/api/v1"
 ###################################################################################################
 # process command line arguements
 
-if [ $# -ne 4 ]
+if [ $# -ne 5 ]
 then
    echo " "
    echo "Incorrect command line arguements."
    echo " "
-   echo "usage: ./test_engine_functional.sh <te-user> <te-password> <test_type> <project-file>"
+   echo "usage: ./test_engine_functional.sh <te-user> <te-password> <test_type> <project-file> <tag>"
    echo " "
    exit 1
 fi
@@ -55,6 +55,7 @@ TE_USER=$1
 TE_PASSWORD=$2
 TE_TYPE=$3
 PROJECT_FILE=$4
+TAG=$5
 
 case $TE_TYPE in
    functional) OK=true;;
@@ -77,10 +78,21 @@ fi
 # begin - send the test suite to the testengine
 
 if [ $TE_TYPE == "functional" ]; then
-   STRING=$(curl -s -X POST "$TE_FQDN/testjobs?testSuiteName=TestSuite%201" \
-                    -H "Content-Type: application/xml"                      \
-                    -u "$TE_USER:$TE_PASSWORD"                              \
+   STRING=$(curl -s -X POST "$TE_FQDN/testjobs?testSuiteName=TestSuite%201&tags=$TAG" \
+                    -H "Content-Type: application/xml"                                \
+                    -u "$TE_USER:$TE_PASSWORD"                                        \
                     --data-binary "@"$PROJECT_FILE)
+
+   ERR=$(echo $STRING | jq '.code')
+   MSG=$(echo $STRING | jq '.message')
+
+   if [ $ERR != null ]; then
+      echo " "
+      echo "ERROR: $MSG"
+      echo " "
+      exit 1
+   fi
+  
    SLEEP_TIME=2
 
 else
@@ -89,6 +101,17 @@ else
                     -H "Content-Type: application/xml"                            \
                     -u "$TE_USER:$TE_PASSWORD"                                    \
                     --data-binary "@"$PROJECT_FILE)
+
+   ERR=$(echo $STRING | jq '.code')
+   MSG=$(echo $STRING | jq '.message')
+
+   if [ $ERR != null ]; then
+      echo " "
+      echo "ERROR: $MSG"
+      echo " "
+      exit 1
+   fi
+
    SLEEP_TIME=60
 
 fi

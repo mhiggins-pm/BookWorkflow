@@ -68,7 +68,7 @@ jobs:
         run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD functional ./readyapi-tests/SwaggerHub-Book-readyapi-project.xml
                 
       - name: Check - Run ReadyAPI Secutity Test Suite on TestEngine
-        run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD security ./readyapi-tests/SwaggerHub-Book-readyapi-project.xml
+        run: ./scripts/test_engine.sh $TE_USER $TE_PASSWORD security ./readyapi-tests/SwaggerHub-Book-readyapi-project.xml GitHubActions
                 
 # if all checks pass:
 #  - set the API to published 
