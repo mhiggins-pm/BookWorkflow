@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="d9259448-dd31-4595-a878-c8c6215e1fae" created="3.5.1" activeEnvironment="Default environment" name="SwaggerHub Book2" resourceRoot="" updated="3.6.0 2021-02-02T15:53:59Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="d9259448-dd31-4595-a878-c8c6215e1fae" created="3.5.1" activeEnvironment="Default environment" name="SwaggerHub Book" resourceRoot="" updated="3.6.0 2021-02-02T15:53:59Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
-  <con:interface xsi:type="con:RestService" id="f20b0303-fd30-499d-b9e8-d2db058a8be4" name="Book2 API" type="rest_ex" wadlVersion="https://swagger.io/openapiv3/specification" definitionUrl="https://swaggerhub.mwhiggins.com/v1/apis/SmartBear_Org/Book2/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:RestService" id="f20b0303-fd30-499d-b9e8-d2db058a8be4" name="Book API" type="rest_ex" wadlVersion="https://swagger.io/openapiv3/specification" definitionUrl="https://swaggerhub.mwhiggins.com/v1/apis/SmartBear_Org/Book2/1.0.0" basePath="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:description>API for tracking your books.</con:description>
     <con:settings/>
     <con:definitionCache type="TEXT" rootPart="https://swaggerhub.mwhiggins.com/v1/apis/SmartBear_Org/Book2/1.0.0">
@@ -23,25 +23,38 @@
     <con:resource name="/book" path="/book" id="2c8c07d0-17e1-41ad-8d31-a04f2651e2c1">
       <con:settings/>
       <con:parameters/>
-      <con:method name="book" id="e909bbcf-4b76-4b1b-bb36-5a6080d89eaa" method="GET">
+      <con:method name="book-get" id="e909bbcf-4b76-4b1b-bb36-5a6080d89eaa" method="GET">
         <con:description>List the books.</con:description>
         <con:settings/>
         <con:parameters/>
-        <con:representation type="RESPONSE">
+        <con:representation type="RESPONSE" id="">
           <con:mediaType>application/json</con:mediaType>
           <con:status>200</con:status>
           <con:params/>
           <con:description>Success</con:description>
           <con:sampleContent>{
-  "title" : "Time Enough For Love",
-  "author" : "Robert A. Heinlein"
+  "items" : [ {
+    "title" : "Time Enough For Love",
+    "author" : "Robert Heinlein",
+    "pub-date" : "12-01-1957"
+  } ]
 }</con:sampleContent>
         </con:representation>
-        <con:request name="get" id="a5b6b789-f724-4775-b6c1-02aded6146ba" mediaType="application/json">
+        <con:representation type="RESPONSE" id="">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+          <con:description>Access token is missing or invalid</con:description>
+          <con:sampleContent>{
+  "code" : 0,
+  "message" : "string"
+}</con:sampleContent>
+        </con:representation>
+        <con:request name="Request 1" id="a5b6b789-f724-4775-b6c1-02aded6146ba" mediaType="application/json">
           <con:settings>
             <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
-          <con:endpoint>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book2/1.0.0</con:endpoint>
+          <con:endpoint>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.1.0</con:endpoint>
           <con:request/>
           <con:originalUri>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book2/1.0.0/book</con:originalUri>
           <con:credentials>
@@ -65,12 +78,12 @@
       <con:savedRecentRuns>1</con:savedRecentRuns>
       <con:testStep type="restrequest" name="get" id="4839a7e1-40bf-4aa0-9420-cb2eff34ece1">
         <con:settings/>
-        <con:config service="Book2 API" resourcePath="/book" methodName="book" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:config service="Book API" resourcePath="/book" methodName="book-get" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:restRequest name="get" id="a5b6b789-f724-4775-b6c1-02aded6146ba" mediaType="application/json">
             <con:settings>
               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
-            <con:endpoint>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book2/1.0.0</con:endpoint>
+            <con:endpoint>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book/1.1.0</con:endpoint>
             <con:request/>
             <con:originalUri>https://swaggerhub.mwhiggins.com/virts/SmartBear_Org/Book2/1.0.0/book</con:originalUri>
             <con:assertion type="Response SLA Assertion" id="6d7769b6-1e2c-4951-9fa4-9fb03ccd34aa" name="Response SLA">
@@ -1306,11 +1319,12 @@
         <con:properties/>
         <con:reportParameters/>
       </con:securityTest>
+      <con:tagId>a6266f81-ba1e-4a3b-9aca-5b0cc6b407d5</con:tagId>
     </con:testCase>
     <con:properties/>
     <con:reportParameters/>
   </con:testSuite>
-  <con:restMockService id="f1362db5-28cc-44a5-9b7f-aac1555c09cc" port="8088" path="/" host="localhost" name="Book2 API Virtual Service">
+  <con:restMockService id="f1362db5-28cc-44a5-9b7f-aac1555c09cc" port="8088" path="/" host="localhost" name="Book API Virtual Service">
     <con:settings/>
     <con:properties/>
     <con:constraints>
@@ -1592,5 +1606,10 @@
     </con:loadUIPanelData>
     <con:reportParameters/>
   </con:loadUiTest>
-  <con:tags/>
+  <con:tags>
+    <con:tag>
+      <con:id>a6266f81-ba1e-4a3b-9aca-5b0cc6b407d5</con:id>
+      <con:name>bash</con:name>
+    </con:tag>
+  </con:tags>
 </con:soapui-project>
