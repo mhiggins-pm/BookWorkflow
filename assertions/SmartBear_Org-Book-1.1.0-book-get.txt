@@ -3,7 +3,7 @@
     {
       "title" : "Time Enough For Love",
       "author" : "Robert Heinlein",
-      "pub-date" : "12-01-1957"
+      "publishDate" : "12-01-1957"
     }
   ]
 }
