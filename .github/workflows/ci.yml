@@ -48,7 +48,7 @@ jobs:
 #  - payload Assertion vs. Auto-mock
 #  - breaking changes from version 1.0.0, "... y y" means no fail but print report
 
-      - name: Check - Open collaboration commenets    
+      - name: Check - Open commenets    
         run: ./scripts/cicd_check_comments.sh $ORG $API $VER
   
       - name: Check - Standardization rule violations   
@@ -72,7 +72,7 @@ jobs:
                 
 # if all checks pass:
 #  - set the API to published 
-#  - saet the API/Version to Defauly
+#  - set the API/Version to Defauly
 #  - publish documentation to bump.sh
 
       - name: Action - Set API to Published
