@@ -17,10 +17,10 @@ REQUIRES = ["connexion"]
 setup(
     name=NAME,
     version=VERSION,
-    description="Book API (w/ actions)",
+    description="Book API (w/ GitHub Actions)",
     author_email="micheal.higgins@smartbear.com",
     url="",
-    keywords=["Swagger", "Book API (w/ actions)"],
+    keywords=["Swagger", "Book API (w/ GitHub Actions)"],
     install_requires=REQUIRES,
     packages=find_packages(),
     package_data={'': ['swagger/swagger.yaml']},
