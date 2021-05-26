@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "Book API (w/ actions)",
+    "title" : "Book API (w/ GitHub Actions)",
     "description" : "API for tracking your books, authors and pub-dates.",
     "termsOfService" : "https://app.swaggerhub.com/eula",
     "contact" : {
@@ -14,10 +14,10 @@
       "url" : "http://www.smartbear.com/licenses/2021/LICENSE-2.0.html"
     },
     "version" : "1.1.0",
-    "x-jira-ticket" : "SNOP-2216",
+    "x-jira-ticket" : "SNOP-2244",
     "x-security-approval" : "required",
     "x-filters" : {
-      "status" : "Devlopment",
+      "status" : "ENV_Development",
       "business-unit" : "Retail",
       "business-domain" : "Books and Magazines"
     }
@@ -37,7 +37,7 @@
     "/book" : {
       "get" : {
         "tags" : [ "Book" ],
-        "description" : "List the books",
+        "description" : "List the books.",
         "operationId" : "book-get",
         "responses" : {
           "200" : {
@@ -45,7 +45,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200"
+                  "$ref" : "#/components/schemas/bookSuccess"
                 }
               }
             }
@@ -79,6 +79,19 @@
   },
   "components" : {
     "schemas" : {
+      "bookSuccess" : {
+        "required" : [ "items" ],
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "additionalProperties" : false,
+            "items" : {
+              "$ref" : "#/components/schemas/bookSuccess_items"
+            }
+          }
+        }
+      },
       "ErrorModel" : {
         "type" : "object",
         "properties" : {
@@ -91,20 +104,8 @@
         },
         "description" : "Default error schema."
       },
-      "inline_response_200" : {
-        "required" : [ "items" ],
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_items"
-            }
-          }
-        }
-      },
-      "inline_response_200_items" : {
-        "required" : [ "author", "pub-date", "title" ],
+      "bookSuccess_items" : {
+        "required" : [ "author", "publishDate", "title" ],
         "type" : "object",
         "properties" : {
           "title" : {
@@ -115,9 +116,9 @@
             "type" : "string",
             "example" : "Robert Heinlein"
           },
-          "pub-date" : {
+          "publishDate" : {
             "type" : "string",
-            "example" : "22-01-2021"
+            "example" : "12-01-1958"
           }
         }
       }
