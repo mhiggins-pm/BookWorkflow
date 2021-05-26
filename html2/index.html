@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Book API (w/ actions)</title>
+  <title>Book API (w/ GitHub Actions)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8" />
@@ -689,6 +689,37 @@
   <script>
     // Script section to load models into a JS Var
     var defs = {}
+            defs["bookSuccess"] = {
+  "required" : [ "items" ],
+  "type" : "object",
+  "properties" : {
+    "items" : {
+      "type" : "array",
+      "additionalProperties" : false,
+      "items" : {
+        "$ref" : "#/components/schemas/bookSuccess_items"
+      }
+    }
+  }
+};
+            defs["bookSuccess_items"] = {
+  "required" : [ "author", "publishDate", "title" ],
+  "type" : "object",
+  "properties" : {
+    "title" : {
+      "type" : "string",
+      "example" : "Time Enough For Love"
+    },
+    "author" : {
+      "type" : "string",
+      "example" : "Robert Heinlein"
+    },
+    "publishDate" : {
+      "type" : "string",
+      "example" : "12-01-1958"
+    }
+  }
+};
             defs["ErrorModel"] = {
   "type" : "object",
   "properties" : {
@@ -700,36 +731,6 @@
     }
   },
   "description" : "Default error schema."
-};
-            defs["inline_response_200"] = {
-  "required" : [ "items" ],
-  "type" : "object",
-  "properties" : {
-    "items" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/inline_response_200_items"
-      }
-    }
-  }
-};
-            defs["inline_response_200_items"] = {
-  "required" : [ "author", "pub-date", "title" ],
-  "type" : "object",
-  "properties" : {
-    "title" : {
-      "type" : "string",
-      "example" : "Time Enough For Love"
-    },
-    "author" : {
-      "type" : "string",
-      "example" : "Robert Heinlein"
-    },
-    "pub-date" : {
-      "type" : "string",
-      "example" : "22-01-2021"
-    }
-  }
 };
   </script>
 
@@ -757,7 +758,7 @@
       <div id="content">
         <div id="project">
           <div class="pull-left">
-            <h1>Book API (w/ actions)</h1>
+            <h1>Book API (w/ GitHub Actions)</h1>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -781,7 +782,7 @@
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">List the books</p>
+                        <p class="marked">List the books.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/book</span></code></pre>
@@ -826,7 +827,7 @@ public class BookApiExample {
 
         BookApi apiInstance = new BookApi();
         try {
-            inline_response_200 result = apiInstance.bookGet();
+            bookSuccess result = apiInstance.bookGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BookApi#bookGet");
@@ -844,7 +845,7 @@ public class BookApiExample {
     public static void main(String[] args) {
         BookApi apiInstance = new BookApi();
         try {
-            inline_response_200 result = apiInstance.bookGet();
+            bookSuccess result = apiInstance.bookGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BookApi#bookGet");
@@ -863,7 +864,7 @@ public class BookApiExample {
 BookApi *apiInstance = [[BookApi alloc] init];
 
 [apiInstance bookGetWithCompletionHandler: 
-              ^(inline_response_200 output, NSError* error) {
+              ^(bookSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -875,11 +876,11 @@ BookApi *apiInstance = [[BookApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Book-bookGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BookApiWActions = require('book_api__w_actions');
-var defaultClient = BookApiWActions.ApiClient.instance;
+                              <pre class="prettyprint"><code class="language-js">var BookApiWGitHubActions = require('book_api__w_git_hub_actions');
+var defaultClient = BookApiWGitHubActions.ApiClient.instance;
 
 
-var api = new BookApiWActions.BookApi()
+var api = new BookApiWGitHubActions.BookApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -913,7 +914,7 @@ namespace Example
 
             try
             {
-                inline_response_200 result = apiInstance.bookGet();
+                bookSuccess result = apiInstance.bookGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1005,7 +1006,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/inline_response_200"
+        "$ref" : "#/components/schemas/bookSuccess"
       }
     }
   }
@@ -2230,7 +2231,7 @@ except ApiException as e:
   
       _classCallCheck(this, JSONSchemaView);
   
-      this.schema = schema; //console.log(schema);
+      this.schema = schema;
       this.open = open;
       this.options = options;
       this.isCollapsed = open <= 0;
@@ -2243,7 +2244,7 @@ except ApiException as e:
       // Determine if a schema is an array
       this.isArray = !this.isAny && this.schema && this.schema.type === 'array';
   
-      this.isObject = this.schema && (this.schema.type === 'object' || this.schema.properties || this.schema.anyOf || this.schema.oneof || this.schema.allOf);
+      this.isObject = this.schema && (this.schema.type === 'object' || this.schema.properties || this.schema.allOf);
   
       // Determine if a schema is a primitive
       this.isPrimitive = !this.isAny && !this.isArray && !this.isObject;
