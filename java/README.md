@@ -1,8 +1,8 @@
 # swagger-java-client
 
-Book API (w/ actions)
+Book API (w/ GitHub Actions)
 - API version: 1.1.0
-  - Build date: 2021-02-17T00:27:29.996Z[GMT]
+  - Build date: 2021-05-26T16:18:41.498Z[GMT]
 
 API for tracking your books, authors and pub-dates.
 
@@ -88,7 +88,7 @@ public class BookApiExample {
 
         BookApi apiInstance = new BookApi();
         try {
-            InlineResponse200 result = apiInstance.bookGet();
+            BookSuccess result = apiInstance.bookGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BookApi#bookGet");
@@ -108,9 +108,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [BookSuccess](docs/BookSuccess.md)
+ - [BookSuccessItems](docs/BookSuccessItems.md)
  - [ErrorModel](docs/ErrorModel.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse200Items](docs/InlineResponse200Items.md)
 
 ## Documentation for Authorization
 

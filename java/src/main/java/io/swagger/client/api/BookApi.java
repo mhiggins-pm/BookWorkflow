@@ -1,5 +1,5 @@
 /*
- * Book API (w/ actions)
+ * Book API (w/ GitHub Actions)
  * API for tracking your books, authors and pub-dates.
  *
  * OpenAPI spec version: 1.1.0
@@ -26,8 +26,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.BookSuccess;
 import io.swagger.client.model.ErrorModel;
-import io.swagger.client.model.InlineResponse200;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -116,35 +116,35 @@ public class BookApi {
 
     /**
      * 
-     * List the books
-     * @return InlineResponse200
+     * List the books.
+     * @return BookSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse200 bookGet() throws ApiException {
-        ApiResponse<InlineResponse200> resp = bookGetWithHttpInfo();
+    public BookSuccess bookGet() throws ApiException {
+        ApiResponse<BookSuccess> resp = bookGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * 
-     * List the books
-     * @return ApiResponse&lt;InlineResponse200&gt;
+     * List the books.
+     * @return ApiResponse&lt;BookSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse200> bookGetWithHttpInfo() throws ApiException {
+    public ApiResponse<BookSuccess> bookGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = bookGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<BookSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * List the books
+     * List the books.
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call bookGetAsync(final ApiCallback<InlineResponse200> callback) throws ApiException {
+    public com.squareup.okhttp.Call bookGetAsync(final ApiCallback<BookSuccess> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -166,7 +166,7 @@ public class BookApi {
         }
 
         com.squareup.okhttp.Call call = bookGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<BookSuccess>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -1,5 +1,5 @@
 /*
- * Book API (w/ actions)
+ * Book API (w/ GitHub Actions)
  * API for tracking your books, authors and pub-dates.
  *
  * OpenAPI spec version: 1.1.0
@@ -13,8 +13,8 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.model.BookSuccess;
 import io.swagger.client.model.ErrorModel;
-import io.swagger.client.model.InlineResponse200;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -34,14 +34,14 @@ public class BookApiTest {
     /**
      * 
      *
-     * List the books
+     * List the books.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void bookGetTest() throws ApiException {
-        InlineResponse200 response = api.bookGet();
+        BookSuccess response = api.bookGet();
 
         // TODO: test validations
     }

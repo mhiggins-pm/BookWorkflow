@@ -19,54 +19,41 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.client.model.BookSuccessItems;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 /**
- * Default error schema.
+ * BookSuccess
  */
-@Schema(description = "Default error schema.")
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-05-26T16:18:41.498Z[GMT]")
-public class ErrorModel {
-  @SerializedName("code")
-  private Integer code = null;
+public class BookSuccess {
+  @SerializedName("items")
+  private List<BookSuccessItems> items = new ArrayList<BookSuccessItems>();
 
-  @SerializedName("message")
-  private String message = null;
+  public BookSuccess items(List<BookSuccessItems> items) {
+    this.items = items;
+    return this;
+  }
 
-  public ErrorModel code(Integer code) {
-    this.code = code;
+  public BookSuccess addItemsItem(BookSuccessItems itemsItem) {
+    this.items.add(itemsItem);
     return this;
   }
 
    /**
-   * Get code
-   * @return code
+   * Get items
+   * @return items
   **/
-  @Schema(description = "")
-  public Integer getCode() {
-    return code;
+  @Schema(required = true, description = "")
+  public List<BookSuccessItems> getItems() {
+    return items;
   }
 
-  public void setCode(Integer code) {
-    this.code = code;
-  }
-
-  public ErrorModel message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Get message
-   * @return message
-  **/
-  @Schema(description = "")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
+  public void setItems(List<BookSuccessItems> items) {
+    this.items = items;
   }
 
 
@@ -78,24 +65,22 @@ public class ErrorModel {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorModel errorModel = (ErrorModel) o;
-    return Objects.equals(this.code, errorModel.code) &&
-        Objects.equals(this.message, errorModel.message);
+    BookSuccess bookSuccess = (BookSuccess) o;
+    return Objects.equals(this.items, bookSuccess.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message);
+    return Objects.hash(items);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorModel {\n");
+    sb.append("class BookSuccess {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

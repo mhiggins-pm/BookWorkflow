@@ -1,5 +1,5 @@
 /*
- * Book API (w/ actions)
+ * Book API (w/ GitHub Actions)
  * API for tracking your books, authors and pub-dates.
  *
  * OpenAPI spec version: 1.1.0
@@ -17,7 +17,7 @@ import io.swagger.client.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-17T00:27:29.996Z[GMT]")public class OAuth implements Authentication {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-05-26T16:18:41.498Z[GMT]")public class OAuth implements Authentication {
   private String accessToken;
 
   public String getAccessToken() {

@@ -1,5 +1,5 @@
 /*
- * Book API (w/ actions)
+ * Book API (w/ GitHub Actions)
  * API for tracking your books, authors and pub-dates.
  *
  * OpenAPI spec version: 1.1.0

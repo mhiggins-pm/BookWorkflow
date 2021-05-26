@@ -1,5 +1,5 @@
 /*
- * Book API (w/ actions)
+ * Book API (w/ GitHub Actions)
  * API for tracking your books, authors and pub-dates.
  *
  * OpenAPI spec version: 1.1.0
@@ -15,7 +15,7 @@ package io.swagger.client;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-02-17T00:27:29.996Z[GMT]")public class ApiException extends Exception {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-05-26T16:18:41.498Z[GMT]")public class ApiException extends Exception {
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;

@@ -8,11 +8,11 @@ Method | HTTP request | Description
 
 <a name="bookGet"></a>
 # **bookGet**
-> InlineResponse200 bookGet()
+> BookSuccess bookGet()
 
 
 
-List the books
+List the books.
 
 ### Example
 ```java
@@ -28,7 +28,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 BookApi apiInstance = new BookApi();
 try {
-    InlineResponse200 result = apiInstance.bookGet();
+    BookSuccess result = apiInstance.bookGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BookApi#bookGet");
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**BookSuccess**](BookSuccess.md)
 
 ### Authorization
 
