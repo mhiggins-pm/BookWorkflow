@@ -2,7 +2,7 @@
 
 Book API (w/ GitHub Actions)
 - API version: 1.1.0
-  - Build date: 2021-05-26T16:18:41.498Z[GMT]
+  - Build date: 2021-05-27T16:20:00.543Z[GMT]
 
 API for tracking your books, authors and pub-dates.
 
