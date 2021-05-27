@@ -28,7 +28,7 @@ import java.util.List;
  * BookSuccess
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-05-27T16:20:00.543Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-05-27T16:23:53.881Z[GMT]")
 public class BookSuccess {
   @SerializedName("items")
   private List<BookSuccessItems> items = new ArrayList<BookSuccessItems>();
